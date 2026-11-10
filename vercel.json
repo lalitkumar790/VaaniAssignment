@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "results.csv",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "REPORT.pdf",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "data/verified_notes.json",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "artifacts/quality_results.csv",
+      "use": "@vercel/static"
+    }
+  ]
+}
