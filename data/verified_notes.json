@@ -1,0 +1,21 @@
+[
+ {"paper":"1706.03762v7","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions."},
+ {"paper":"1706.03762v7","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task."},
+ {"paper":"1706.03762v7","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU."},
+ {"paper":"1706.03762v7","page":3,"note":"paraphrased teaching note; verify original PDF before submission","text":"The decoder applies masking to self-attention to prevent positions from attending to future positions."},
+ {"paper":"1706.03762v7","page":4,"note":"paraphrased teaching note; verify original PDF before submission","text":"Scaled dot-product attention divides query-key dot products by the square root of the key dimensionality before softmax."},
+ {"paper":"1706.03762v7","page":5,"note":"paraphrased teaching note; verify original PDF before submission","text":"The base Transformer uses eight attention heads in parallel, with key and value dimensionality of 64 per head."},
+ {"paper":"1706.03762v7","page":6,"note":"paraphrased teaching note; verify original PDF before submission","text":"The positional encodings use sine and cosine functions of different frequencies to express token positions."},
+ {"paper":"2410.00037v1","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"Moshi is a speech-text model for full-duplex real-time spoken dialogue, handling overlapping speech without explicit speaker turns."},
+ {"paper":"2410.00037v1","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"Moshi reports theoretical latency of 160ms for its real-time speech-to-speech model."},
+ {"paper":"2410.00037v1","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"Moshi reports about 200ms practical latency, versus 160ms theoretically."},
+ {"paper":"2410.00037v1","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"Moshi models its own speech and user speech as separate parallel streams, enabling full-duplex dialogue."},
+ {"paper":"2410.00037v1","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"The Inner Monologue method predicts time-aligned text tokens before audio tokens, improving linguistic quality."},
+ {"paper":"2410.00037v1","page":10,"note":"paraphrased teaching note; verify original PDF before submission","text":"The causal Mimi neural audio codec operates in a streaming manner and has an initial frame of 80ms."},
+ {"paper":"2507.07955v2","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"H-Net uses dynamic chunking in a hierarchical network and replaces the fixed tokenization-language-model-detokenization pipeline with one learned end-to-end model."},
+ {"paper":"2507.07955v2","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"H-Net with one stage processing bytes outperforms a compute-matched BPE-token Transformer on language modeling."},
+ {"paper":"2507.07955v2","page":1,"note":"paraphrased teaching note; verify original PDF before submission","text":"On DNA sequences, the H-Net paper reports nearly 4x greater data efficiency compared with baselines."},
+ {"paper":"2507.07955v2","page":6,"note":"paraphrased teaching note; verify original PDF before submission","text":"The H-Net routing module detects dynamic chunk boundaries by measuring cosine similarity between adjacent representations."},
+ {"paper":"2507.07955v2","page":6,"note":"paraphrased teaching note; verify original PDF before submission","text":"A chunking layer combines a routing module that draws boundaries with a downsampler that compresses the sequence."},
+ {"paper":"2507.07955v2","page":8,"note":"paraphrased teaching note; verify original PDF before submission","text":"Ratio loss regularizes dynamic chunking so the model does not trivially retain nearly all vectors."}
+]

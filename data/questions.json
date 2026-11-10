@@ -1,0 +1,20 @@
+[
+ {"question":"What does the Transformer replace from recurrent sequence models?","scope":"inside","paper":"1706.03762v7","accept":["recurrence"]},
+ {"question":"What BLEU did the Transformer report for English-to-German translation?","scope":"inside","paper":"1706.03762v7","accept":["28.4"]},
+ {"question":"What BLEU score did the Transformer reach on English-to-French?","scope":"inside","paper":"1706.03762v7","accept":["41.8"]},
+ {"question":"Why does the Transformer decoder use masking?","scope":"inside","paper":"1706.03762v7","accept":["future positions"]},
+ {"question":"What factor scales dot-product attention scores?","scope":"inside","paper":"1706.03762v7","accept":["square root"]},
+ {"question":"How many attention heads are used in the base Transformer?","scope":"inside","paper":"1706.03762v7","accept":["eight"]},
+ {"question":"Which mathematical functions are used in the Transformer positional encoding?","scope":"inside","paper":"1706.03762v7","accept":["sine and cosine"]},
+ {"question":"What is the theoretical latency of Moshi?","scope":"inside","paper":"2410.00037v1","accept":["160ms"]},
+ {"question":"What is the practical latency reported for Moshi?","scope":"inside","paper":"2410.00037v1","accept":["200ms"]},
+ {"question":"How does Moshi model its own and user speech?","scope":"inside","paper":"2410.00037v1","accept":["parallel streams"]},
+ {"question":"What does Moshi's Inner Monologue predict before audio tokens?","scope":"inside","paper":"2410.00037v1","accept":["text tokens"]},
+ {"question":"What is Mimi's initial audio frame length?","scope":"inside","paper":"2410.00037v1","accept":["80ms"]},
+ {"question":"What pipeline does H-Net replace with a learned end-to-end model?","scope":"inside","paper":"2507.07955v2","accept":["tokenization"]},
+ {"question":"How much data-efficiency improvement is reported on DNA sequences?","scope":"inside","paper":"2507.07955v2","accept":["4x"]},
+ {"question":"Which measure guides H-Net's routing module to identify boundaries?","scope":"inside","paper":"2507.07955v2","accept":["cosine similarity"]},
+ {"question":"What color is the office chair of the Moshi lead author?","scope":"outside","paper":"","accept":[]},
+ {"question":"What was Vaani's stock market price on November 10, 2026?","scope":"outside","paper":"","accept":[]},
+ {"question":"Who will win the next football World Cup?","scope":"outside","paper":"","accept":[]}
+]
