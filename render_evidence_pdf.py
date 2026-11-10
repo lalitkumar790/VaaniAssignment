@@ -13,9 +13,7 @@ import fitz
 
 ROOT=Path(__file__).resolve().parent
 ROWS=list(csv.DictReader((ROOT/"results.csv").open(encoding="utf-8")))
-H=json.loads((ROOT/"artifacts/real_headers.json").read_text())
 TR=json.loads((ROOT/"artifacts/v3_real_traces.json").read_text())
-V1_429=next(a for a in H if a["http_status"]==429)
 GROUP=lambda name:[x for x in ROWS if x["scenario"]==name]
 def quant(vals,p):
     z=sorted(float(x) for x in vals if x not in ("",None))
