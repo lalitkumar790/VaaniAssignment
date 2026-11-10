@@ -1,0 +1,4124 @@
+[
+  {
+    "request_id": "steady-000",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.1
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.52
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.54
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.58
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 129.89
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 137.27
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 244.42
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 244.62
+      }
+    ],
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-001",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.83
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.85
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.86
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.91
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 109.05
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 116.3
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 209.08
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 209.13
+      }
+    ],
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-003",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.47
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 108.75
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 115.98
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 224.67
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 224.69
+      }
+    ],
+    "answer": "The decoder applies masking to self-attention to prevent positions from attending to future positions. [1706.03762v7 p.3]",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-002",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.52
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.58
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 361.41
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 368.7
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 448.82
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 448.83
+      }
+    ],
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-004",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 5.73
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 92.12
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 99.36
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 229.02
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 229.04
+      }
+    ],
+    "answer": "Scaled dot-product attention divides query-key dot products by the square root of the key dimensionality before softmax. [1706.03762v7 p.4]",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-006",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.12
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.47
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.5
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.53
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 207.9
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 215.14
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 330.06
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 330.1
+      }
+    ],
+    "answer": "The positional encodings use sine and cosine functions of different frequencies to express token positions. [1706.03762v7 p.6]",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-007",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.3
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 109.83
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 280.8
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 288.06
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 373.95
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 373.99
+      }
+    ],
+    "answer": "Moshi reports theoretical latency of 160ms for its real-time speech-to-speech model. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-005",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 817.74
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 825.09
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 961.56
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 961.59
+      }
+    ],
+    "answer": "The base Transformer uses eight attention heads in parallel, with key and value dimensionality of 64 per head. [1706.03762v7 p.5]",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-008",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 153.89
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 316.12
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 323.59
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 396.06
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 396.1
+      }
+    ],
+    "answer": "Moshi reports about 200ms practical latency, versus 160ms theoretically. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-009",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 81.28
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 157.27
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 164.67
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 281.62
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 281.67
+      }
+    ],
+    "answer": "Moshi models its own speech and user speech as separate parallel streams, enabling full-duplex dialogue. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-010",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.98
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 1.07
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 1.08
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 1.11
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 125.08
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 132.41
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.88
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.92
+      }
+    ],
+    "answer": "The Inner Monologue method predicts time-aligned text tokens before audio tokens, improving linguistic quality. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.10]",
+      "[1706.03762v7 p.4]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "steady-011",
+    "scenario": "steady",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 819.11
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 826.37
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 962.12
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 962.16
+      }
+    ],
+    "answer": "The causal Mimi neural audio codec operates in a streaming manner and has an initial frame of 80ms. [2410.00037v1 p.10]",
+    "retrieved": [
+      "[2410.00037v1 p.10]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-012",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.21
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-013",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.15
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.16
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.16
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.17
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-014",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.2
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-015",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.16
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.18
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-016",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.16
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.17
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "burst-017",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.14
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.14
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.14
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.15
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.15
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "burst-018",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.22
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.22
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-019",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.22
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.22
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.23
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.23
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.23
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-020",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.19
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-021",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.21
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-001",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.08
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.28
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.29
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.29
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.31
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 125.39
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 133.04
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 228.49
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 228.53
+      }
+    ],
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-003",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 240.39
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 240.4
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 240.4
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-004",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.24
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.26
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.26
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.34
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.35
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.35
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-005",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.09
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.09
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.09
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-006",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 240.89
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 240.9
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 240.9
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-007",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.16
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.17
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 240.72
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 240.72
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 240.72
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-008",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 240.55
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 240.55
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 240.55
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-009",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.18
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.2
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.23
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.24
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.24
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-010",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.48
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.5
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.5
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.04
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.04
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.05
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.10]",
+      "[1706.03762v7 p.4]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-011",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.0
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.22
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 240.55
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 240.55
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 240.55
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.10]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-000",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.3
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.31
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 130.23
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 137.7
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 247.94
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 247.96
+      }
+    ],
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "burst-002",
+    "scenario": "burst",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.23
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.25
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.25
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 228.25
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 332.42
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 339.66
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 418.18
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 418.21
+      }
+    ],
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-000",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 129.76
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 137.04
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 247.26
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 247.27
+      }
+    ],
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-001",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.22
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.25
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.59
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.61
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.62
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.66
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 125.36
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 132.66
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 228.02
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 228.09
+      }
+    ],
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-010",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.07
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.44
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.10]",
+      "[1706.03762v7 p.4]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-004",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 240.78
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 240.79
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 240.79
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-011",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.38
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.10]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-005",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.17
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.24
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.24
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-012",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.51
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-002",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 176.79
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 281.08
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 288.45
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 369.89
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 369.93
+      }
+    ],
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-013",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.31
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.35
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-007",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.13
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.14
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.14
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-003",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 158.63
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 266.19
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 273.57
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 382.93
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 382.95
+      }
+    ],
+    "answer": "The decoder applies masking to self-attention to prevent positions from attending to future positions. [1706.03762v7 p.3]",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-014",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.45
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-015",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.41
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-009",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.48
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.5
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "queue_timeout",
+        "elapsed_ms": 241.04
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 241.05
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 241.06
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-016",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.37
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "sustained_overload-017",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.34
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "sustained_overload-018",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.11
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.57
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.58
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.69
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.69
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.69
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-006",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 230.34
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 316.55
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 323.75
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 440.22
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 440.25
+      }
+    ],
+    "answer": "The positional encodings use sine and cosine functions of different frequencies to express token positions. [1706.03762v7 p.6]",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-019",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 1.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 1.38
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 1.38
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 1.4
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 1.4
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 1.4
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-020",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.45
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-021",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.38
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-022",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.42
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-008",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.11
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.77
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.79
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.8
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 206.8
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 443.51
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 450.76
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 523.28
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 523.32
+      }
+    ],
+    "answer": "Moshi reports about 200ms practical latency, versus 160ms theoretically. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-023",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.37
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-024",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.39
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-025",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.41
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-026",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.53
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.54
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.56
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.56
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "sustained_overload-027",
+    "scenario": "sustained_overload",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.47
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.47
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-000",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.21
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.23
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.23
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.25
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 131.28
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 138.6
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 246.84
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 246.88
+      }
+    ],
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-001",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.52
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 125.68
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 132.91
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 227.62
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 227.65
+      }
+    ],
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-006",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.51
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-002",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 106.18
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 210.93
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 218.66
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 299.06
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 299.1
+      }
+    ],
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-007",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.08
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.48
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.51
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-003",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 87.61
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 195.39
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 202.81
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 311.64
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 311.68
+      }
+    ],
+    "answer": "The decoder applies masking to self-attention to prevent positions from attending to future positions. [1706.03762v7 p.3]",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-008",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.6
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.62
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.63
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.65
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.65
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.65
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-009",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.41
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-004",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 158.93
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 245.45
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 252.63
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 382.42
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 382.45
+      }
+    ],
+    "answer": "Scaled dot-product attention divides query-key dot products by the square root of the key dimensionality before softmax. [1706.03762v7 p.4]",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-010",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.58
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.61
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.61
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.63
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.63
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.64
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.10]",
+      "[1706.03762v7 p.4]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-011",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.43
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.10]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-012",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.39
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-005",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 170.44
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 406.6
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 413.87
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 550.63
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 550.67
+      }
+    ],
+    "answer": "The base Transformer uses eight attention heads in parallel, with key and value dimensionality of 64 per head. [1706.03762v7 p.5]",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-013",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.32
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.36
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-014",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.11
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.55
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.58
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.58
+      },
+      {
+        "stage": "limit_minute",
+        "elapsed_ms": 0.6
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.6
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.61
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "rpm_halved-015",
+    "scenario": "rpm_halved",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.4
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-000",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.01
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.22
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.23
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.24
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.25
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.25
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.25
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2507.07955v2 p.6]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-001",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.08
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.11
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.47
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.47
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.49
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-002",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.08
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.51
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.53
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.54
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.64
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.65
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.67
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-003",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.5
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.52
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.52
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.54
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.54
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.54
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-004",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.38
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.4
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.41
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.3]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-005",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.47
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-006",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.41
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.43
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.46
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-007",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.38
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-008",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.35
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.36
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.39
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.39
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "daily_exhausted-009",
+    "scenario": "daily_exhausted",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.16
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.19
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.91
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.93
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.94
+      },
+      {
+        "stage": "limit_daily",
+        "elapsed_ms": 0.96
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 0.96
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 0.96
+      }
+    ],
+    "answer": "The service is at its usage limit. I can't give a verified answer now.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  }
+]

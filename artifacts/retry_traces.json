@@ -1,0 +1,116 @@
+[
+  {
+    "request_id": "retry-0",
+    "scenario": "fail_fast",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.45
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.47
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 110.83
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 110.84
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 110.84
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  },
+  {
+    "request_id": "retry-1",
+    "scenario": "retry_once",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.31
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.33
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.34
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.37
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 110.66
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 160.91
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 160.96
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 463.41
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 473.79
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 595.36
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 595.64
+      }
+    ],
+    "answer": "Moshi reports theoretical latency of 160ms for its real-time speech-to-speech model. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "demo paraphrased notes"
+  }
+]
