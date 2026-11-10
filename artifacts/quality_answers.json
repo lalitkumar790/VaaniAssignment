@@ -1,0 +1,272 @@
+[
+  {
+    "id": "q-small-00",
+    "grade": "correct",
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-small-01",
+    "grade": "correct",
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-small-02",
+    "grade": "correct",
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-small-03",
+    "grade": "correct",
+    "answer": "The decoder applies masking to self-attention to prevent positions from attending to future positions. [1706.03762v7 p.3]"
+  },
+  {
+    "id": "q-small-04",
+    "grade": "correct",
+    "answer": "Scaled dot-product attention divides query-key dot products by the square root of the key dimensionality before softmax. [1706.03762v7 p.4]"
+  },
+  {
+    "id": "q-small-05",
+    "grade": "correct",
+    "answer": "The base Transformer uses eight attention heads in parallel, with key and value dimensionality of 64 per head. [1706.03762v7 p.5]"
+  },
+  {
+    "id": "q-small-06",
+    "grade": "correct",
+    "answer": "The positional encodings use sine and cosine functions of different frequencies to express token positions. [1706.03762v7 p.6]"
+  },
+  {
+    "id": "q-small-07",
+    "grade": "correct",
+    "answer": "Moshi reports theoretical latency of 160ms for its real-time speech-to-speech model. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-small-08",
+    "grade": "correct",
+    "answer": "Moshi reports about 200ms practical latency, versus 160ms theoretically. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-small-09",
+    "grade": "correct",
+    "answer": "Moshi models its own speech and user speech as separate parallel streams, enabling full-duplex dialogue. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-small-10",
+    "grade": "correct",
+    "answer": "The Inner Monologue method predicts time-aligned text tokens before audio tokens, improving linguistic quality. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-small-11",
+    "grade": "correct",
+    "answer": "The causal Mimi neural audio codec operates in a streaming manner and has an initial frame of 80ms. [2410.00037v1 p.10]"
+  },
+  {
+    "id": "q-small-12",
+    "grade": "correct",
+    "answer": "H-Net uses dynamic chunking in a hierarchical network and replaces the fixed tokenization-language-model-detokenization pipeline with one learned end-to-end model. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-small-13",
+    "grade": "correct",
+    "answer": "On DNA sequences, the H-Net paper reports nearly 4x greater data efficiency compared with baselines. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-small-14",
+    "grade": "correct",
+    "answer": "The H-Net routing module detects dynamic chunk boundaries by measuring cosine similarity between adjacent representations. [2507.07955v2 p.6]"
+  },
+  {
+    "id": "q-small-15",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-small-16",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-small-17",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-balanced-00",
+    "grade": "correct",
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-balanced-01",
+    "grade": "correct",
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-balanced-02",
+    "grade": "correct",
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-balanced-03",
+    "grade": "correct",
+    "answer": "The decoder applies masking to self-attention to prevent positions from attending to future positions. [1706.03762v7 p.3]"
+  },
+  {
+    "id": "q-balanced-04",
+    "grade": "correct",
+    "answer": "Scaled dot-product attention divides query-key dot products by the square root of the key dimensionality before softmax. [1706.03762v7 p.4]"
+  },
+  {
+    "id": "q-balanced-05",
+    "grade": "correct",
+    "answer": "The base Transformer uses eight attention heads in parallel, with key and value dimensionality of 64 per head. [1706.03762v7 p.5]"
+  },
+  {
+    "id": "q-balanced-06",
+    "grade": "correct",
+    "answer": "The positional encodings use sine and cosine functions of different frequencies to express token positions. [1706.03762v7 p.6]"
+  },
+  {
+    "id": "q-balanced-07",
+    "grade": "correct",
+    "answer": "Moshi reports theoretical latency of 160ms for its real-time speech-to-speech model. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-balanced-08",
+    "grade": "correct",
+    "answer": "Moshi reports about 200ms practical latency, versus 160ms theoretically. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-balanced-09",
+    "grade": "correct",
+    "answer": "Moshi models its own speech and user speech as separate parallel streams, enabling full-duplex dialogue. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-balanced-10",
+    "grade": "correct",
+    "answer": "The Inner Monologue method predicts time-aligned text tokens before audio tokens, improving linguistic quality. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-balanced-11",
+    "grade": "correct",
+    "answer": "The causal Mimi neural audio codec operates in a streaming manner and has an initial frame of 80ms. [2410.00037v1 p.10]"
+  },
+  {
+    "id": "q-balanced-12",
+    "grade": "correct",
+    "answer": "H-Net uses dynamic chunking in a hierarchical network and replaces the fixed tokenization-language-model-detokenization pipeline with one learned end-to-end model. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-balanced-13",
+    "grade": "correct",
+    "answer": "On DNA sequences, the H-Net paper reports nearly 4x greater data efficiency compared with baselines. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-balanced-14",
+    "grade": "correct",
+    "answer": "The H-Net routing module detects dynamic chunk boundaries by measuring cosine similarity between adjacent representations. [2507.07955v2 p.6]"
+  },
+  {
+    "id": "q-balanced-15",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-balanced-16",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-balanced-17",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-wide-00",
+    "grade": "correct",
+    "answer": "The Transformer replaces recurrent sequence-to-sequence networks with attention mechanisms instead of recurrence and convolutions. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-wide-01",
+    "grade": "correct",
+    "answer": "The Transformer obtains 28.4 BLEU on the WMT 2014 English-to-German translation task. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-wide-02",
+    "grade": "correct",
+    "answer": "On WMT 2014 English-to-French translation, the Transformer reports 41.8 BLEU. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-wide-03",
+    "grade": "correct",
+    "answer": "The decoder applies masking to self-attention to prevent positions from attending to future positions. [1706.03762v7 p.3]"
+  },
+  {
+    "id": "q-wide-04",
+    "grade": "correct",
+    "answer": "Scaled dot-product attention divides query-key dot products by the square root of the key dimensionality before softmax. [1706.03762v7 p.4]"
+  },
+  {
+    "id": "q-wide-05",
+    "grade": "correct",
+    "answer": "The base Transformer uses eight attention heads in parallel, with key and value dimensionality of 64 per head. [1706.03762v7 p.5]"
+  },
+  {
+    "id": "q-wide-06",
+    "grade": "correct",
+    "answer": "The positional encodings use sine and cosine functions of different frequencies to express token positions. [1706.03762v7 p.6]"
+  },
+  {
+    "id": "q-wide-07",
+    "grade": "correct",
+    "answer": "Moshi reports theoretical latency of 160ms for its real-time speech-to-speech model. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-wide-08",
+    "grade": "correct",
+    "answer": "Moshi reports about 200ms practical latency, versus 160ms theoretically. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-wide-09",
+    "grade": "correct",
+    "answer": "Moshi models its own speech and user speech as separate parallel streams, enabling full-duplex dialogue. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-wide-10",
+    "grade": "correct",
+    "answer": "The Inner Monologue method predicts time-aligned text tokens before audio tokens, improving linguistic quality. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-wide-11",
+    "grade": "correct",
+    "answer": "The causal Mimi neural audio codec operates in a streaming manner and has an initial frame of 80ms. [2410.00037v1 p.10]"
+  },
+  {
+    "id": "q-wide-12",
+    "grade": "correct",
+    "answer": "H-Net uses dynamic chunking in a hierarchical network and replaces the fixed tokenization-language-model-detokenization pipeline with one learned end-to-end model. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-wide-13",
+    "grade": "correct",
+    "answer": "On DNA sequences, the H-Net paper reports nearly 4x greater data efficiency compared with baselines. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-wide-14",
+    "grade": "correct",
+    "answer": "The H-Net routing module detects dynamic chunk boundaries by measuring cosine similarity between adjacent representations. [2507.07955v2 p.6]"
+  },
+  {
+    "id": "q-wide-15",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-wide-16",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-wide-17",
+    "grade": "refused_correctly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  }
+]
