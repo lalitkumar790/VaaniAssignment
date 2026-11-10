@@ -1,0 +1,812 @@
+[
+  {
+    "request_id": "real-000",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.14
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.4
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.47
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.47
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 649.54
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 649.55
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 649.56
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.10]",
+      "[1706.03762v7 p.10]",
+      "[1706.03762v7 p.9]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-001",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.31
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.38
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.39
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 107.47
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 107.51
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 107.52
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.8]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-002",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 8.14
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 8.23
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 8.23
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 100.77
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 100.82
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 100.82
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.8]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-003",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 6.88
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 6.96
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 6.96
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 65.47
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 65.48
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 65.48
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-004",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.0
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.09
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.09
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 61.54
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 61.55
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 61.56
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.4]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-005",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.99
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 8.06
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 8.07
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 66.84
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 66.85
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 66.85
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.9]",
+      "[1706.03762v7 p.8]",
+      "[1706.03762v7 p.15]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-006",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.27
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.35
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.35
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 67.56
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 67.58
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 67.58
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.9]",
+      "[1706.03762v7 p.6]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-007",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 33.85
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 33.93
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 33.93
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 92.45
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 92.46
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 92.46
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.26]",
+      "[2410.00037v1 p.26]",
+      "[2410.00037v1 p.41]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-008",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 30.63
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 30.72
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 30.73
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 88.57
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 88.58
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 88.58
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.25]",
+      "[2410.00037v1 p.31]",
+      "[2410.00037v1 p.3]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-009",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 33.5
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 33.59
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 33.59
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 90.31
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 90.32
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 90.32
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.15]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-010",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 38.32
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 38.41
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 38.42
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 95.44
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 95.45
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 95.45
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.3]",
+      "[2410.00037v1 p.5]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-011",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.07
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 34.02
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 34.1
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 34.1
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 95.93
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 95.95
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 95.95
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.10]",
+      "[2410.00037v1 p.12]",
+      "[2410.00037v1 p.12]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-012",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 27.02
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 27.11
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 27.11
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 82.61
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 82.62
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 82.62
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.4]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-013",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 23.46
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 23.53
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 23.54
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 119.57
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 119.59
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 119.59
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.4]",
+      "[2507.07955v2 p.5]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-014",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 28.51
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 28.58
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 28.58
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 119.5
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 119.52
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 119.52
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2507.07955v2 p.8]",
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.2]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-015",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 30.85
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 30.95
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 30.96
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 125.42
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 125.43
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 125.44
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2410.00037v1 p.64]",
+      "[2410.00037v1 p.64]",
+      "[2410.00037v1 p.59]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-016",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 55.71
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 55.81
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 55.81
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 116.66
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 116.67
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 116.67
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2507.07955v2 p.12]",
+      "[2410.00037v1 p.8]",
+      "[2410.00037v1 p.58]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-017",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.1
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 51.53
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 51.64
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 51.64
+      },
+      {
+        "stage": "upstream_error",
+        "elapsed_ms": 108.2
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 108.21
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 108.21
+      }
+    ],
+    "answer": "I couldn't verify a reply within the response deadline. Please try later.",
+    "retrieved": [
+      "[2507.07955v2 p.39]",
+      "[2410.00037v1 p.64]",
+      "[2410.00037v1 p.64]"
+    ],
+    "source_note": "versioned PDFs"
+  }
+]
