@@ -1,0 +1,272 @@
+[
+  {
+    "id": "q-small-00",
+    "grade": "refused_wrongly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-small-01",
+    "grade": "correct",
+    "answer": "Our model achieves 28.4 BLEU on the WMT 2014 English- to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-small-02",
+    "grade": "correct",
+    "answer": "On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of. [1706.03762v7 p.1]"
+  },
+  {
+    "id": "q-small-03",
+    "grade": "wrong",
+    "answer": "We also use the usual learned linear transfor- mation and softmax function to convert the decoder output to predicted next-token probabilities. [1706.03762v7 p.5]"
+  },
+  {
+    "id": "q-small-04",
+    "grade": "wrong",
+    "answer": "Dot-product attention is identical to our algorithm, except for the scaling factor of \u221adk1. [1706.03762v7 p.4]"
+  },
+  {
+    "id": "q-small-05",
+    "grade": "wrong",
+    "answer": "6.2 Model Variations To evaluate the importance of different components of the Transformer, we varied our base model in different ways, measuring the change in performance on English-to-German translation on the 5We used. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-small-06",
+    "grade": "refused_wrongly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-small-07",
+    "grade": "wrong",
+    "answer": "However, this delay pattern induces a theoretical latency of 8 timesteps, which amounts to 640ms, a latency that is incompatible with the requirements of a real-time dialogue model. [2410.00037v1 p.26]"
+  },
+  {
+    "id": "q-small-08",
+    "grade": "wrong",
+    "answer": "5.8 Compressing Moshi and Impact on Speech Quality With most modern LLMs built off billions of parameters, model size is a well-known bot- tleneck for practical uses such as running on resource-constrained devices (e.g. [2410.00037v1 p.31]"
+  },
+  {
+    "id": "q-small-09",
+    "grade": "correct",
+    "answer": "Starting from a text language model backbone, Moshi generates speech as tokens from the residual quantizer of a neural audio codec, while model- ing separately its own speech and that of the user into parallel streams. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-small-10",
+    "grade": "correct",
+    "answer": "time-aligned text tokens before audio to- kens. [2410.00037v1 p.3]"
+  },
+  {
+    "id": "q-small-11",
+    "grade": "correct",
+    "answer": "Both its initial frame size and overall stride correspond to 80ms, meaning that given a first audio frame of 80ms, Mimi outputs a first latent timestep, which can be decoded to 80ms of output audio. [2410.00037v1 p.10]"
+  },
+  {
+    "id": "q-small-12",
+    "grade": "correct",
+    "answer": "Incorporating this into an explicit hierarchical network (H-Net) allows replacing the (implicitly hierarchical) tokenization\u2013LM\u2013 detokenization pipeline with a single model learned fully end-to-end. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-small-13",
+    "grade": "wrong",
+    "answer": "Finally, the H-Net\u2019s improvement over tokenized pipelines is further increased in languages and modalities with weaker tokenization heuristics, such as Chinese and code, or DNA sequences (nearly 4\u00d7 improvement in data. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-small-14",
+    "grade": "wrong",
+    "answer": "\u2022 Confidence scoring (6): The coefficient \ud835\udc50quantifies the routing module\u2019s confidence in its boundary decisions. [2507.07955v2 p.8]"
+  },
+  {
+    "id": "q-small-15",
+    "grade": "wrong",
+    "answer": "MOSHI: so, teal is a color that is made up of blue and green, and maroon is a color that is made up of red and brown. [2410.00037v1 p.64]"
+  },
+  {
+    "id": "q-small-16",
+    "grade": "wrong",
+    "answer": "Learning rate 3 \u00b7 10\u22124 3 \u00b7 10\u22125 3 \u00b7 10\u22126 2 \u00b7 10\u22126 2 \u00b7 10\u22126 Depth Transformer Model dimension - 1024 MLP dimension - 4096 Number of heads - 16 Number of layers - 6 Learning rate - 2 \u00b7 10\u22124 5 \u00b7 10\u22125 4 \u00b7 10\u22126 2 \u00b7 10\u22126 Input. [2410.00037v1 p.8]"
+  },
+  {
+    "id": "q-small-17",
+    "grade": "wrong",
+    "answer": "USER: and how about his college football MOSHI: He played college football for the Texas Tech Red Raiders. [2410.00037v1 p.64]"
+  },
+  {
+    "id": "q-balanced-00",
+    "grade": "refused_wrongly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-balanced-01",
+    "grade": "correct",
+    "answer": "6 Results 6.1 Machine Translation On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-balanced-02",
+    "grade": "wrong",
+    "answer": "On the WMT 2014 English-to-French translation task, our big model achieves a BLEU score of 41.0, outperforming all of the previously published single models, at less than 1/4 the training cost of the previous state-of-the-art model. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-balanced-03",
+    "grade": "wrong",
+    "answer": "3.2.3 Applications of Attention in our Model The Transformer uses multi-head attention in three different ways: \u2022 In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. [1706.03762v7 p.5]"
+  },
+  {
+    "id": "q-balanced-04",
+    "grade": "wrong",
+    "answer": "Dot-product attention is identical to our algorithm, except for the scaling factor of \u221adk1. [1706.03762v7 p.4]"
+  },
+  {
+    "id": "q-balanced-05",
+    "grade": "wrong",
+    "answer": "6.2 Model Variations To evaluate the importance of different components of the Transformer, we varied our base model in different ways, measuring the change in performance on English-to-German translation on the 5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-balanced-06",
+    "grade": "wrong",
+    "answer": "That is, each dimension of the positional encoding corresponds to a sinusoid. [1706.03762v7 p.6]"
+  },
+  {
+    "id": "q-balanced-07",
+    "grade": "correct",
+    "answer": "Moreover, and as described in Table 1, we settle on a theoretical latency of 160ms by pretraining Moshi with an acoustic delay of 2 and finetuning it with an acoustic delay of 1. [2410.00037v1 p.26]"
+  },
+  {
+    "id": "q-balanced-08",
+    "grade": "wrong",
+    "answer": "5.8 Compressing Moshi and Impact on Speech Quality With most modern LLMs built off billions of parameters, model size is a well-known bot- tleneck for practical uses such as running on resource-constrained devices (e.g. [2410.00037v1 p.31]"
+  },
+  {
+    "id": "q-balanced-09",
+    "grade": "correct",
+    "answer": "Starting from a text language model backbone, Moshi generates speech as tokens from the residual quantizer of a neural audio codec, while model- ing separately its own speech and that of the user into parallel streams. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-balanced-10",
+    "grade": "correct",
+    "answer": "\u2022 In Section 3.4.4, we introduce Inner Monologue, a new training and inference setup for audio language models that significantly improves the factuality and linguistic quality of generated speech by predicting time-aligned text tokens before audio to- kens. [2410.00037v1 p.3]"
+  },
+  {
+    "id": "q-balanced-11",
+    "grade": "correct",
+    "answer": "Both its initial frame size and overall stride correspond to 80ms, meaning that given a first audio frame of 80ms, Mimi outputs a first latent timestep, which can be decoded to 80ms of output audio. [2410.00037v1 p.10]"
+  },
+  {
+    "id": "q-balanced-12",
+    "grade": "correct",
+    "answer": "Incorporating this into an explicit hierarchical network (H-Net) allows replacing the (implicitly hierarchical) tokenization\u2013LM\u2013 detokenization pipeline with a single model learned fully end-to-end. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-balanced-13",
+    "grade": "wrong",
+    "answer": "Finally, the H-Net\u2019s improvement over tokenized pipelines is further increased in languages and modalities with weaker tokenization heuristics, such as Chinese and code, or DNA sequences (nearly 4\u00d7 improvement in data efficiency over baselines), showing the potential of true end-to-end models that learn and scale better from unprocessed data. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-balanced-14",
+    "grade": "wrong",
+    "answer": "2.2 Dynamic Chunking (DC) H-Net learns chunking boundaries through end-to-end training, allowing it to identify semantically meaningful units adaptively. [2507.07955v2 p.6]"
+  },
+  {
+    "id": "q-balanced-15",
+    "grade": "wrong",
+    "answer": "MOSHI: so, teal is a color that is made up of blue and green, and maroon is a color that is made up of red and brown. [2410.00037v1 p.64]"
+  },
+  {
+    "id": "q-balanced-16",
+    "grade": "wrong",
+    "answer": "For illustration purposes, we highlight silences throughout Figure 6 and 10, but we count them as artifact-free timesteps otherwise. [2410.00037v1 p.58]"
+  },
+  {
+    "id": "q-balanced-17",
+    "grade": "wrong",
+    "answer": "The former football player. [2410.00037v1 p.64]"
+  },
+  {
+    "id": "q-wide-00",
+    "grade": "refused_wrongly",
+    "answer": "I can't verify that from the three specified papers, so I won't guess."
+  },
+  {
+    "id": "q-wide-01",
+    "grade": "correct",
+    "answer": "6 Results 6.1 Machine Translation On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-wide-02",
+    "grade": "wrong",
+    "answer": "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the training cost. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-wide-03",
+    "grade": "wrong",
+    "answer": "We also use the usual learned linear transfor- mation and softmax function to convert the decoder output to predicted next-token probabilities. [1706.03762v7 p.5]"
+  },
+  {
+    "id": "q-wide-04",
+    "grade": "wrong",
+    "answer": "Dot-product attention is identical to our algorithm, except for the scaling factor of \u221adk1. [1706.03762v7 p.4]"
+  },
+  {
+    "id": "q-wide-05",
+    "grade": "wrong",
+    "answer": "6.2 Model Variations To evaluate the importance of different components of the Transformer, we varied our base model in different ways, measuring the change in performance on English-to-German translation on the 5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively. [1706.03762v7 p.8]"
+  },
+  {
+    "id": "q-wide-06",
+    "grade": "wrong",
+    "answer": "That is, each dimension of the positional encoding corresponds to a sinusoid. [1706.03762v7 p.6]"
+  },
+  {
+    "id": "q-wide-07",
+    "grade": "correct",
+    "answer": "Moreover, and as described in Table 1, we settle on a theoretical latency of 160ms by pretraining Moshi with an acoustic delay of 2 and finetuning it with an acoustic delay of 1. [2410.00037v1 p.26]"
+  },
+  {
+    "id": "q-wide-08",
+    "grade": "wrong",
+    "answer": "5.8 Compressing Moshi and Impact on Speech Quality With most modern LLMs built off billions of parameters, model size is a well-known bot- tleneck for practical uses such as running on resource-constrained devices (e.g. [2410.00037v1 p.31]"
+  },
+  {
+    "id": "q-wide-09",
+    "grade": "correct",
+    "answer": "Starting from a text language model backbone, Moshi generates speech as tokens from the residual quantizer of a neural audio codec, while model- ing separately its own speech and that of the user into parallel streams. [2410.00037v1 p.1]"
+  },
+  {
+    "id": "q-wide-10",
+    "grade": "correct",
+    "answer": "\u2022 In Section 3.4.4, we introduce Inner Monologue, a new training and inference setup for audio language models that significantly improves the factuality and linguistic quality of generated speech by predicting time-aligned text tokens before audio to- kens. [2410.00037v1 p.3]"
+  },
+  {
+    "id": "q-wide-11",
+    "grade": "correct",
+    "answer": "Both its initial frame size and overall stride correspond to 80ms, meaning that given a first audio frame of 80ms, Mimi outputs a first latent timestep, which can be decoded to 80ms of output audio. [2410.00037v1 p.10]"
+  },
+  {
+    "id": "q-wide-12",
+    "grade": "correct",
+    "answer": "Incorporating this into an explicit hierarchical network (H-Net) allows replacing the (implicitly hierarchical) tokenization\u2013LM\u2013 detokenization pipeline with a single model learned fully end-to-end. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-wide-13",
+    "grade": "wrong",
+    "answer": "Finally, the H-Net\u2019s improvement over tokenized pipelines is further increased in languages and modalities with weaker tokenization heuristics, such as Chinese and code, or DNA sequences (nearly 4\u00d7 improvement in data efficiency over baselines), showing the potential of true end-to-end models that learn and scale better from unprocessed data. [2507.07955v2 p.1]"
+  },
+  {
+    "id": "q-wide-14",
+    "grade": "wrong",
+    "answer": ".\u0305 \u2133 (c) Smoothing Module 0\"#$ /0\" +\" (b) Downsampler - Chunking /0 (a) Routing Module \u2130 T h e _ e n d _ o f _ t o k e n s Dynamic Chunking Figure 1: (left) Architectural overview of H-Net with a two-stage hierarchical design (\ud835\udc46= 2). [2507.07955v2 p.3]"
+  },
+  {
+    "id": "q-wide-15",
+    "grade": "wrong",
+    "answer": "MOSHI: so, teal is a color that is made up of blue and green, and maroon is a color that is made up of red and brown. [2410.00037v1 p.64]"
+  },
+  {
+    "id": "q-wide-16",
+    "grade": "wrong",
+    "answer": "We are also interested in how speaker\u2019s consistency evolves over time. [2410.00037v1 p.38]"
+  },
+  {
+    "id": "q-wide-17",
+    "grade": "wrong",
+    "answer": "The former football player. [2410.00037v1 p.64]"
+  }
+]

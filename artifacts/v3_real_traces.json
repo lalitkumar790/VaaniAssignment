@@ -1,0 +1,884 @@
+[
+  {
+    "request_id": "real-000",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.14
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.34
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.41
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.41
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 339.11
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 394.35
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 424.76
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 424.89
+      }
+    ],
+    "answer": "The Transformer replaces the recurrent layers with multi\u2011headed self\u2011attention. [1706.03762v7 p.10]",
+    "retrieved": [
+      "[1706.03762v7 p.10]",
+      "[1706.03762v7 p.10]",
+      "[1706.03762v7 p.9]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-001",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.05
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.12
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.13
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 221.04
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 303.64
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 345.37
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 345.39
+      }
+    ],
+    "answer": "The Transformer achieved a BLEU score of 28.4 on the WMT\u202f2014 English\u2011to\u2011German translation task. [1706.03762v7 p.8]",
+    "retrieved": [
+      "[1706.03762v7 p.8]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-002",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 8.05
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 8.13
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 8.14
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 454.78
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 506.92
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 541.52
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 541.55
+      }
+    ],
+    "answer": "The Transformer achieved a BLEU score of 41.8 on English-to-French. [1706.03762v7 p.1]",
+    "retrieved": [
+      "[1706.03762v7 p.8]",
+      "[1706.03762v7 p.1]",
+      "[1706.03762v7 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-003",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 6.68
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 6.76
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 6.76
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 237.82
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 284.23
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 329.61
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 329.64
+      }
+    ],
+    "answer": "The Transformer decoder uses masking to prevent positions from attending to subsequent positions, preserving the auto\u2011regressive property. [1706.03762v7 p.5]",
+    "retrieved": [
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.5]",
+      "[1706.03762v7 p.3]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-004",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.09
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.14
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.22
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.22
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 108.61
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 148.15
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 178.73
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 178.75
+      }
+    ],
+    "answer": "The dot\u2011product attention scores are scaled by the factor 1/\u221adk. [1706.03762v7 p.4]",
+    "retrieved": [
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.4]",
+      "[1706.03762v7 p.4]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-005",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 8.03
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 8.1
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 8.11
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 286.31
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 343.79
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 360.28
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 360.29
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[1706.03762v7 p.9]",
+      "[1706.03762v7 p.8]",
+      "[1706.03762v7 p.15]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-006",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 7.22
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 7.3
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 7.3
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 205.09
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 272.59
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 302.84
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 302.86
+      }
+    ],
+    "answer": "The Transformer uses sine and cosine functions of varying frequencies for positional encoding. [1706.03762v7 p.6]",
+    "retrieved": [
+      "[1706.03762v7 p.6]",
+      "[1706.03762v7 p.9]",
+      "[1706.03762v7 p.6]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-007",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 33.25
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 33.32
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 33.32
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 267.79
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 322.1
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 351.56
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 351.59
+      }
+    ],
+    "answer": "The theoretical latency of Moshi is 160\u202fms. [2410.00037v1 p.26]",
+    "retrieved": [
+      "[2410.00037v1 p.26]",
+      "[2410.00037v1 p.26]",
+      "[2410.00037v1 p.41]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-008",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.04
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.07
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 30.4
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 30.48
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 30.49
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 271.19
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 323.64
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 341.64
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 341.64
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2410.00037v1 p.25]",
+      "[2410.00037v1 p.31]",
+      "[2410.00037v1 p.3]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-009",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 33.58
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 33.68
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 33.68
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 336.15
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 361.04
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 420.35
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 420.37
+      }
+    ],
+    "answer": "Moshi models its own speech and that of the user into parallel streams, generating speech as tokens from the residual quantizer of a neural audio codec while separately modeling each speaker\u2019s audio [2410.00037v1 p.1].",
+    "retrieved": [
+      "[2410.00037v1 p.15]",
+      "[2410.00037v1 p.1]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-010",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 37.72
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 37.8
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 37.81
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 337.74
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 388.03
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 422.43
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 422.45
+      }
+    ],
+    "answer": "Moshi\u2019s Inner Monologue predicts time\u2011aligned text tokens before audio tokens. [2410.00037v1 p.1]",
+    "retrieved": [
+      "[2410.00037v1 p.3]",
+      "[2410.00037v1 p.5]",
+      "[2410.00037v1 p.1]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-011",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 33.66
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 33.74
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 33.75
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 208.85
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 266.39
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 294.07
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 294.09
+      }
+    ],
+    "answer": "Mimi\u2019s initial audio frame length is 80\u202fms. [2410.00037v1 p.10]",
+    "retrieved": [
+      "[2410.00037v1 p.10]",
+      "[2410.00037v1 p.12]",
+      "[2410.00037v1 p.12]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-012",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 26.69
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 26.77
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 26.77
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 302.18
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 392.02
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 438.02
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 438.04
+      }
+    ],
+    "answer": "H\u2011Net replaces the (implicitly hierarchical) tokenization\u2013LM\u2013detokenization pipeline with a single model learned fully end-to-end. [2507.07955v2 p.1]",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.4]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-013",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 22.96
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 23.03
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 23.04
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 124.89
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 222.42
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 251.36
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 251.38
+      }
+    ],
+    "answer": "3.6\u00d7 improved data efficiency compared to isotropic models. [2507.07955v2 p.4]",
+    "retrieved": [
+      "[2507.07955v2 p.1]",
+      "[2507.07955v2 p.4]",
+      "[2507.07955v2 p.5]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-014",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.02
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 28.87
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 28.95
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 28.96
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 199.7
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 263.07
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 291.66
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 291.68
+      }
+    ],
+    "answer": "The loss guides H\u2011Net\u2019s routing module to identify boundaries. [2507.07955v2 p.8]",
+    "retrieved": [
+      "[2507.07955v2 p.8]",
+      "[2507.07955v2 p.6]",
+      "[2507.07955v2 p.2]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-015",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 30.26
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 30.35
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 30.36
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 248.42
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 288.96
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 310.49
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 310.5
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2410.00037v1 p.64]",
+      "[2410.00037v1 p.64]",
+      "[2410.00037v1 p.59]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-016",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 55.02
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 55.12
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 55.12
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 379.72
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 445.47
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 463.89
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 463.9
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2507.07955v2 p.12]",
+      "[2410.00037v1 p.8]",
+      "[2410.00037v1 p.58]"
+    ],
+    "source_note": "versioned PDFs"
+  },
+  {
+    "request_id": "real-017",
+    "scenario": "real_modest",
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.06
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 56.02
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 56.12
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 56.13
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 297.02
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 333.79
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 358.57
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 358.58
+      }
+    ],
+    "answer": "I can't verify that from the three specified papers, so I won't guess.",
+    "retrieved": [
+      "[2507.07955v2 p.39]",
+      "[2410.00037v1 p.64]",
+      "[2410.00037v1 p.64]"
+    ],
+    "source_note": "versioned PDFs"
+  }
+]
