@@ -5,7 +5,10 @@
 
 A research-paper QA pipeline with an explicit **citation-or-refuse** policy, configurable retrieval, a Groq streaming adapter, a failure-injecting stand-in, and per-request latency/load instrumentation.
 
-> **Submission state (2026-11-10):** Local stand-in tests are reproducible. **Real Groq requests have not been run** because there is no user Groq key in this execution environment. The stand-in has **not** been calibrated to real Groq measurements. The local fixture is **19 paraphrased, page-checked notes** from the exact versions, not a substitute for downloading and indexing the full papers. This is a working prototype and an honest partial empirical submission, **not** a claim to have completed all brief requirements.
+> **Verified 10 November 2026:** Exact arXiv PDFs downloaded, 18 real Groq V3 calls succeeded, and the earlier first run measured 16 successful requests followed by one HTTP429. Calibrated stand-in traffic scenarios are available. **Accuracy is still limited:** automated full-PDF stand-in oracle 18/54 correct, and assistant-reviewed live-model quality 12/18 correct plus 3 justified refusals (not independently human-audited). Never equate HTTP200 with a correct answer.
+
+**Interactive research dashboard:** https://vaani-relay.vercel.app (deployment ready; currently requires owner Vercel login). **Detailed tables:** [REPORT.md](REPORT.md); **answer audit:** [QUALITY_AUDIT.md](QUALITY_AUDIT.md); **exact raw measurements:** [results.csv](results.csv) (447 request records). **Real-provider evidence:** [V1](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930), [V3](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714). **V2** contained an escaped secret expression and its 18 HTTP401 errors are preserved but not treated as valid latency results.
+
 
 ## Exact library (versions cannot float)
 
@@ -41,7 +44,7 @@ python relay.py ask "How does Moshi support full-duplex speech?"
 # PowerShell: $env:GROQ_API_KEY="your-key"
 # bash: export GROQ_API_KEY="your-key"
 python relay.py ask --real "How does Moshi support full-duplex speech?"
-python relay.py real-probe --count 8
+python relay.py real-probe --count 8 --gap 5
 # Saves artifacts/real_results.csv, real_traces.json and real_headers.json
 ```
 
@@ -78,3 +81,12 @@ The stand-in simulates queueing, streaming chunks, lognormal startup delays, loa
 5. **Must complete:** export your actual conversation history and *personally* review choices/overrides. The assignment asks for your honest choices, not AI-fabricated attribution.
 
 Do not report the prototype's benchmark figures as validated real Groq performance.
+
+
+## Submission integrity
+
+- Main report must fit **two pages**. The full [REPORT.md](REPORT.md) is evidence backing, not the two-page deliverable. The latest two-page PDF is provided with the submission archive; an earlier `REPORT.pdf` checked into GitHub may be from the preliminary run, so do not submit an old copy without checking its date and numbers.
+- An assistant-created question bank is not automatically "questions you wrote yourself". Applicant should review/rewrite the 18 questions, validate the 3 exact PDF citations, and defend the grade criteria.
+- The existing `conversation_history.md` is an excerpt, **not a verbatim complete export**. Attach the unedited actual conversation to meet the assignment's disclosure requirement.
+- The Vercel demo is a static evidence viewer with curated notes, not a public Groq agent; do not expose your API key in the client.
+- The hosted Groq key belongs only in GitHub Actions secret `GROQ_API_KEY`, never source files or chat messages.
