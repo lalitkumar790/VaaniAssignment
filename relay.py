@@ -254,11 +254,11 @@ class Groq:
     """Real hosted Groq streaming API; never stores or prints the key."""
     source = "real"
 
-    def __init__(self, model="llama-3.1-8b-instant"):
+    def __init__(self, model=None):
         self.key = os.getenv("GROQ_API_KEY")
         if not self.key:
             raise RuntimeError("GROQ_API_KEY is not set. Real requests cannot be measured.")
-        self.model = model
+        self.model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
         self.header_observations = []
 
     async def stream(self, question, evidence, callback, observe=None):
