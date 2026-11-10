@@ -1,8 +1,8 @@
-name: Relay V2 evidence (single bounded run)
+name: Relay V3 evidence (single bounded run)
 on:
   push:
     branches: [main]
-    paths: [validation/run_v2.txt]
+    paths: [validation/run_v3.txt]
 permissions:
   contents: write
 jobs:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      GROQ_API_KEY: \${{ secrets.GROQ_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GROQ_MODEL: openai/gpt-oss-20b
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -28,7 +28,19 @@ jobs:
         run: python relay.py quality
       - name: Send up to 18 genuine hosted calls, one every 5 seconds
         run: python relay.py real-probe --count 18 --gap 5
-      - name: Preserve V2 evidence and append rows (do not overwrite V1)
+      - name: Require at least one accepted Groq response
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          with open('artifacts/real_results.csv', newline='',encoding='utf-8') as f:
+            rows=list(csv.DictReader(f))
+          ok=sum(r['status']=='ok' and int(r['tokens_in'])>0 for r in rows)
+          if not ok:
+            raise SystemExit('NO HOSTED SUCCESS: Check Authorization/HTTP status in artifacts/real_headers.json; never report an empty probe as a success.')
+          print('Accepted hosted responses with usage:',ok,'of',len(rows))
+          PY
+      - name: Preserve V3 evidence and append rows (do not overwrite V1)
         shell: bash
         run: |
           python - <<'PY'
@@ -36,23 +48,23 @@ jobs:
           root=pathlib.Path('.')
           arts=root/'artifacts'
           pairs=[
-            ('real_results.csv','v2_real_results.csv'),
-            ('real_traces.json','v2_real_traces.json'),
-            ('real_headers.json','v2_real_headers.json'),
-            ('quality_results.csv','v2_fullpdf_quality_results.csv'),
-            ('quality_answers.json','v2_fullpdf_quality_answers.json')]
+            ('real_results.csv','v3_real_results.csv'),
+            ('real_traces.json','v3_real_traces.json'),
+            ('real_headers.json','v3_real_headers.json'),
+            ('quality_results.csv','v3_fullpdf_quality_results.csv'),
+            ('quality_answers.json','v3_fullpdf_quality_answers.json')]
           for source, dest in pairs:
             shutil.copy2(arts/source,arts/dest)
           with open(root/'results.csv',newline='',encoding='utf-8') as f:
             rows=list(csv.DictReader(f))
           fields=list(rows[0])
           ids={x['request_id'] for x in rows}
-          for filename in ('v2_fullpdf_quality_results.csv','v2_real_results.csv'):
+          for filename in ('v3_fullpdf_quality_results.csv','v3_real_results.csv'):
             with open(arts/filename,newline='',encoding='utf-8') as f:
               incoming=list(csv.DictReader(f))
             for r in incoming:
-              r['request_id']='v2-'+r['request_id']
-              r['scenario']='v2_'+r['scenario']
+              r['request_id']='v3-'+r['request_id']
+              r['scenario']='v3_'+r['scenario']
               assert r['request_id'] not in ids, r['request_id']
               ids.add(r['request_id'])
               rows.append(r)
@@ -65,20 +77,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results.csv artifacts/v2_real_results.csv artifacts/v2_real_traces.json artifacts/v2_real_headers.json artifacts/v2_fullpdf_quality_results.csv artifacts/v2_fullpdf_quality_answers.json
+          git add results.csv artifacts/v3_real_results.csv artifacts/v3_real_traces.json artifacts/v3_real_headers.json artifacts/v3_fullpdf_quality_results.csv artifacts/v3_fullpdf_quality_answers.json
           git add -f data/papers/manifest.json
           if ! git diff --cached --quiet; then
-            git commit -m "Add full-PDF and 18-question Groq V2 validation evidence"
+            git commit -m "Add full-PDF and 18-question Groq V3 validation evidence"
             git push origin HEAD:main
           fi
       - name: Upload immutable evidence bundle
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: relay-v2-evidence
+          name: relay-v3-evidence
           path: |
-            artifacts/v2_*.csv
-            artifacts/v2_*.json
+            artifacts/v3_*.csv
+            artifacts/v3_*.json
             data/papers/manifest.json
           retention-days: 14
           if-no-files-found: warn
