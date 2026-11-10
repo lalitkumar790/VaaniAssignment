@@ -579,6 +579,7 @@ def main():
             p.add_argument("--real", action="store_true")
         if cmd == "real-probe":
             p.add_argument("--count", type=int, default=8)
+            p.add_argument("--gap", type=float, default=1.0, help="Minimum pause between real calls, to avoid TPM spikes")
     args = parser.parse_args()
     if args.command == "fetch":
         fetch_papers()
@@ -613,7 +614,7 @@ def main():
                 rows.append(record)
                 if record["status"] == "rate_limited":
                     break
-                await asyncio.sleep(1)
+                await asyncio.sleep(args.gap)
             write_csv(ROOT / "artifacts" / "real_results.csv", rows)
             (ROOT/"artifacts"/"real_traces.json").write_text(json.dumps(trace, indent=2), encoding="utf-8")
             (ROOT/"artifacts"/"real_headers.json").write_text(json.dumps(model.header_observations, indent=2), encoding="utf-8")
