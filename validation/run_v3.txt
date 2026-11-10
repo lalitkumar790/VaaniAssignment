@@ -1,0 +1,1 @@
+Corrected one-shot hosted evaluation trigger. Uses existing protected GROQ_API_KEY expression (without unwanted escaping), 18 paced requests and successful-response requirement. All previous runs retained.
