@@ -1,0 +1,1 @@
+One-time evidence validation trigger: full-PDF corpus and 18 Groq calls, paced to respect RPM and TPM. Run authorized from initial assignment implementation request; store no secrets. Triggered on 10 November 2026.
