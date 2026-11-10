@@ -259,6 +259,7 @@ class Groq:
         if not self.key:
             raise RuntimeError("GROQ_API_KEY is not set. Real requests cannot be measured.")
         self.model = model
+        self.header_observations = []
 
     async def stream(self, question, evidence, callback, observe=None):
         observe = observe or (lambda event: None)
@@ -275,6 +276,11 @@ class Groq:
         async with httpx.AsyncClient(timeout=httpx.Timeout(25, connect=6)) as client:
             async with client.stream("POST", "https://api.groq.com/openai/v1/chat/completions", json=payload,
                                      headers={"Authorization": "Bearer " + self.key}) as response:
+                names = ("retry-after", "x-ratelimit-limit-requests", "x-ratelimit-remaining-requests",
+                         "x-ratelimit-limit-tokens", "x-ratelimit-remaining-tokens",
+                         "x-ratelimit-reset-requests", "x-ratelimit-reset-tokens")
+                self.header_observations.append({"at": utc(), "http_status": response.status_code,
+                                                 "headers": {n: response.headers[n] for n in names if n in response.headers}})
                 if response.status_code == 429:
                     raise Limited("groq_429", float(response.headers.get("retry-after", "0") or 0))
                 response.raise_for_status()
@@ -565,6 +571,7 @@ def main():
                 await asyncio.sleep(1)
             write_csv(ROOT / "artifacts" / "real_results.csv", rows)
             (ROOT/"artifacts"/"real_traces.json").write_text(json.dumps(trace, indent=2), encoding="utf-8")
+            (ROOT/"artifacts"/"real_headers.json").write_text(json.dumps(model.header_observations, indent=2), encoding="utf-8")
             print(json.dumps(stats(rows), indent=2))
         asyncio.run(probe())
 

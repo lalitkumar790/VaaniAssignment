@@ -106,7 +106,7 @@ md=['# The Relay — Vaani ML Engineering Intern',
 for label in ['Requests/minute','Tokens/minute','Requests/day','Tokens/day','Requests in flight','Actual 429 payload','Recovery time']:
     md.append(f'| {label} | not measured | key not available; docs only | low |')
 md.extend(['', '## 3 Results', 'All load observations are local stand-in; timings are measured wall-clock. '
-           'TTFT p50/p95/p99 is **conditional on actually emitting a token**; NM means none emitted.',
+           'TTFT p50/p95/p99 is **internal first model token**, conditional on emitting one; the user receives only citation-verified output. NM means none emitted.',
            '', '**Table 2a — Latency**',
            '| Scenario | Source | N | Duration s | Offered/min | TTFT p50/p95/p99 ms | Total p50/p95/p99 ms |',
            '|---|---|---:|---:|---:|---|---|'])
@@ -233,7 +233,7 @@ y=heading(x,y,'3  Results   —   every table recomputed from results.csv')
 y=text_line(x,y,'TABLE 1  •  Hosted Groq limits (provider documents describe 429/retry-after; account-specific values unobserved)',8,bold=True)
 table1=[[v,'not measured','no account key','low'] for v in ['Requests/minute','Tokens/minute','Requests/day','Tokens/day','Concurrent inflight','Actual 429 payload','Reset time']]
 y=table(x,y-3,['Limit','Value','Method','Confidence'],table1,[250,250,500,95],7.8,17)
-y=text_line(x,y,'TABLE 2a  •  Latency; TTFT percentiles are conditional on a token being emitted; NM = no token',8,bold=True)
+y=text_line(x,y,'TABLE 2a  •  Internal model TTFT only (not user-visible); conditional on token emission; NM = no token',8,bold=True)
 data=[]
 for name,d in load_summary.items():
     data.append([name,'stand-in',d['n'],f"{d['duration_s']:.2f}",f"{d['offered_per_min']:.1f}",d['ttft'],d['total']])

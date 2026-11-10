@@ -19,7 +19,7 @@ The production adapter targets Groq streaming OpenAI-compatible chat completions
 | Recovery time | not measured | key not available; docs only | low |
 
 ## 3 Results
-All load observations are local stand-in; timings are measured wall-clock. TTFT p50/p95/p99 is **conditional on actually emitting a token**; NM means none emitted.
+All load observations are local stand-in; timings are measured wall-clock. TTFT p50/p95/p99 is **internal first model token**, conditional on emitting one; the user receives only citation-verified output. NM means none emitted.
 
 **Table 2a — Latency**
 | Scenario | Source | N | Duration s | Offered/min | TTFT p50/p95/p99 ms | Total p50/p95/p99 ms |

@@ -39,6 +39,7 @@ python relay.py ask "How does Moshi support full-duplex speech?"
 # bash: export GROQ_API_KEY="your-key"
 python relay.py ask --real "How does Moshi support full-duplex speech?"
 python relay.py real-probe --count 8
+# Saves artifacts/real_results.csv, real_traces.json and real_headers.json
 ```
 
 **Never commit API keys.** The script reads `GROQ_API_KEY` from the environment. The brief asks you to use your own account, observe your exact RPM/TPM/RPD limits, watch `429` headers, measure a modest amount of real service traffic, then fit stand-in delay distributions to those observations. Until that is done, keep the report explicitly marked **not measured**.
