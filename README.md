@@ -1,5 +1,8 @@
 # The Relay — Vaani ML Engineering Intern assignment
 
+> **Web demo:** https://vaani-relay.vercel.app — deployed on Vercel. Currently protected by the owner's Vercel Authentication setting; external access needs explicit owner approval. The site uses local stand-in CSV and paraphrased evidence notes only, **not a live Groq-backed chatbot**. For real free-tier measurements, see [OPERATIONS.md](OPERATIONS.md) and the manual **Groq measurements** GitHub Actions workflow. Do not share an API key in the repository or chat.
+
+
 A research-paper QA pipeline with an explicit **citation-or-refuse** policy, configurable retrieval, a Groq streaming adapter, a failure-injecting stand-in, and per-request latency/load instrumentation.
 
 > **Submission state (2026-11-10):** Local stand-in tests are reproducible. **Real Groq requests have not been run** because there is no user Groq key in this execution environment. The stand-in has **not** been calibrated to real Groq measurements. The local fixture is **19 paraphrased, page-checked notes** from the exact versions, not a substitute for downloading and indexing the full papers. This is a working prototype and an honest partial empirical submission, **not** a claim to have completed all brief requirements.
