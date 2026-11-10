@@ -1,0 +1,217 @@
+{
+  "source": "stand-in only; not calibrated to real Groq",
+  "created_utc": "2026-11-10T16:43:05.285749+00:00",
+  "load_configs": {
+    "steady": {
+      "n": 12,
+      "arrival_gap_s": 0.22,
+      "rpm": 60,
+      "rpd": 100
+    },
+    "burst": {
+      "n": 22,
+      "arrival_gap_s": 0,
+      "rpm": 12,
+      "rpd": 100
+    },
+    "sustained_overload": {
+      "n": 28,
+      "arrival_gap_s": 0.035,
+      "rpm": 10,
+      "rpd": 100
+    },
+    "rpm_halved": {
+      "n": 16,
+      "arrival_gap_s": 0.07,
+      "rpm": 6,
+      "rpd": 100
+    },
+    "daily_exhausted": {
+      "n": 10,
+      "arrival_gap_s": 0.06,
+      "rpm": 20,
+      "rpd": 0
+    }
+  },
+  "all_scenarios": {
+    "steady": {
+      "n": 12,
+      "duration_s": 3.38,
+      "offered_per_min": 212.8,
+      "ttft": "189.9/825.7/826.2",
+      "total": "305.9/961.9/962.1",
+      "succeeded": "100.0%",
+      "rate_limited": "0.0%",
+      "timeout_error": "0.0%",
+      "retries": 0.0,
+      "peak_queue": 0,
+      "tokens_per_answer": 119.6,
+      "cost_usd_1000": 0.0
+    },
+    "burst": {
+      "n": 22,
+      "duration_s": 0.42,
+      "offered_per_min": 3150.4,
+      "ttft": "66.6/289.2/329.6",
+      "total": "234.5/247.6/382.5",
+      "succeeded": "27.3%",
+      "rate_limited": "31.8%",
+      "timeout_error": "40.9%",
+      "retries": 0.0,
+      "peak_queue": 8,
+      "tokens_per_answer": 19.5,
+      "cost_usd_1000": 0.0
+    },
+    "sustained_overload": {
+      "n": 28,
+      "duration_s": 0.95,
+      "offered_per_min": 1776.2,
+      "ttft": "137.0/400.0/440.6",
+      "total": "0.5/420.2/500.9",
+      "succeeded": "32.1%",
+      "rate_limited": "53.6%",
+      "timeout_error": "14.3%",
+      "retries": 0.0,
+      "peak_queue": 4,
+      "tokens_per_answer": 27.4,
+      "cost_usd_1000": 0.0
+    },
+    "rpm_halved": {
+      "n": 16,
+      "duration_s": 1.05,
+      "offered_per_min": 912.9,
+      "ttft": "202.8/365.5/404.2",
+      "total": "0.6/424.5/525.4",
+      "succeeded": "43.8%",
+      "rate_limited": "56.2%",
+      "timeout_error": "0.0%",
+      "retries": 0.0,
+      "peak_queue": 0,
+      "tokens_per_answer": 48.6,
+      "cost_usd_1000": 0.0
+    },
+    "daily_exhausted": {
+      "n": 10,
+      "duration_s": 0.54,
+      "offered_per_min": 1107.8,
+      "ttft": "NM/NM/NM",
+      "total": "0.5/0.8/0.9",
+      "succeeded": "0.0%",
+      "rate_limited": "100.0%",
+      "timeout_error": "0.0%",
+      "retries": 0.0,
+      "peak_queue": 0,
+      "tokens_per_answer": 0.0,
+      "cost_usd_1000": 0.0
+    }
+  },
+  "retrieval_settings": {
+    "small": {
+      "n": 18,
+      "correct": "83.3%",
+      "wrong": "0.0%",
+      "refused": "16.7%",
+      "tokens": 64.1,
+      "ttft": "69.8/133.4",
+      "total": "164.5/231.6"
+    },
+    "balanced": {
+      "n": 18,
+      "correct": "83.3%",
+      "wrong": "0.0%",
+      "refused": "16.7%",
+      "tokens": 103.1,
+      "ttft": "69.9/133.5",
+      "total": "165.1/231.7"
+    },
+    "wide": {
+      "n": 18,
+      "correct": "83.3%",
+      "wrong": "0.0%",
+      "refused": "16.7%",
+      "tokens": 142.1,
+      "ttft": "70.0/133.7",
+      "total": "165.3/232.0"
+    }
+  },
+  "slowest_successful_request": {
+    "id": "steady-011",
+    "total_ms": 962.16,
+    "first_token_ms": 826.36,
+    "observed_queue_wait_ms": 0.0,
+    "work_before_first_token_ms": 825.9,
+    "work_after_first_token_ms": 135.8,
+    "retry_duration_ms": 0,
+    "timeline": [
+      {
+        "stage": "arrival",
+        "elapsed_ms": 0.03
+      },
+      {
+        "stage": "classify",
+        "elapsed_ms": 0.05
+      },
+      {
+        "stage": "retrieve",
+        "elapsed_ms": 0.42
+      },
+      {
+        "stage": "plan",
+        "elapsed_ms": 0.44
+      },
+      {
+        "stage": "queue_enter",
+        "elapsed_ms": 0.46
+      },
+      {
+        "stage": "queue_leave",
+        "elapsed_ms": 0.49
+      },
+      {
+        "stage": "prefill_done",
+        "elapsed_ms": 819.11
+      },
+      {
+        "stage": "first_token",
+        "elapsed_ms": 826.37
+      },
+      {
+        "stage": "draft_end",
+        "elapsed_ms": 962.12
+      },
+      {
+        "stage": "verify",
+        "elapsed_ms": 962.16
+      }
+    ]
+  },
+  "retry_example": [
+    {
+      "scenario": "fail_fast",
+      "status": "error",
+      "total_ms": "110.85",
+      "retries": "0"
+    },
+    {
+      "scenario": "retry_once",
+      "status": "ok",
+      "total_ms": "595.65",
+      "retries": "1"
+    }
+  ],
+  "measurements": {
+    "real_calls": 0,
+    "stand_in_load_calls": 88,
+    "quality_calls": 54,
+    "retry_calls": 2,
+    "all_rows": 144
+  },
+  "limitations": [
+    "No GROQ_API_KEY or external network access in this execution environment.",
+    "Demo data are paraphrased page-verified notes rather than fetched full PDFs.",
+    "Stand-in latencies are measured wall clock, uncalibrated to a real provider.",
+    "Stand-in token counts are rough 4-character proxies; they are not model tokenizer usage.",
+    "Grade is a predefined substring-and-citation oracle; not blinded human assessment.",
+    "Local stand-in calls have zero external API charges; excludes electricity and hardware."
+  ]
+}
