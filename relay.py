@@ -99,16 +99,54 @@ class Corpus:
         return cls(passages)
 
     def retrieve(self, question, setting="balanced"):
+        """Page-preserving, sentence-boundary lexical retrieval, with explicit paper routing.
+
+        The original character-stride splitter cut mathematical facts mid-word,
+        and the old all-paper search confused different models' attention heads.
+        """
         size, topk, rerank = SETTINGS[setting]
+        q = question.lower()
+        if any(term in q for term in ("moshi", "mimi", "inner monologue")):
+            papers = {"2410.00037v1"}
+        elif any(term in q for term in ("h-net", "hnet", "dynamic chunk", "chunk boundar", "dna sequence", "routing module")):
+            papers = {"2507.07955v2"}
+        elif any(term in q for term in ("transformer", "bleu", "dot-product", "positional encoding", "masked attention")):
+            papers = {"1706.03762v7"}
+        else:
+            papers = set(PAPERS)
         chunks = []
         for p in self.passages:
-            # split each page independently; never create falsely cross-page citations
-            for start in range(0, len(p.text), max(50, size - 80)):
-                excerpt = p.text[start:start+size].strip()
-                if len(excerpt) >= 25:
-                    chunks.append(Passage(p.paper, p.page, excerpt, p.note))
-                if start+size >= len(p.text):
-                    break
+            if p.paper not in papers:
+                continue
+            sentences = re.split(r"(?<=[.!?])\s+", p.text)
+            units = []
+            for sentence in sentences:
+                sentence = sentence.strip()
+                if not sentence:
+                    continue
+                if len(sentence) > size:
+                    pieces, group = sentence.split(), []
+                    for w in pieces:
+                        if group and len(" ".join(group)) + 1 + len(w) > size:
+                            units.append(" ".join(group))
+                            group = []
+                        group.append(w)
+                    if group:
+                        units.append(" ".join(group))
+                else:
+                    units.append(sentence)
+            buf = []
+            for sentence in units:
+                candidate = " ".join(buf + [sentence])
+                if buf and len(candidate) > size:
+                    block = " ".join(buf)
+                    if len(block) > 24:
+                        chunks.append(Passage(p.paper, p.page, block, p.note))
+                    buf = [buf[-1], sentence] if len(buf[-1]) + 1 + len(sentence) <= size else [sentence]
+                else:
+                    buf.append(sentence)
+            if buf and len(" ".join(buf)) > 24:
+                chunks.append(Passage(p.paper, p.page, " ".join(buf), p.note))
         if not chunks:
             return []
         query = Counter(words(question))
@@ -116,22 +154,23 @@ class Corpus:
         df = Counter(w for d in docs for w in d)
         avglen = max(1, statistics.mean(sum(d.values()) for d in docs))
         scored = []
-        for p, d in zip(chunks, docs):
+        query_terms = set(query)
+        for passage, d in zip(chunks, docs):
             length = max(1, sum(d.values()))
             bm25 = sum(math.log1p((len(docs)-df[t]+0.5)/(df[t]+0.5)) * (f*2.2/(f+1.2*(0.25+0.75*length/avglen))) * n
                        for t, n in query.items() if (f := d.get(t, 0)))
             if bm25 > 0:
-                scored.append((bm25, p))
+                content_words = " ".join(words(passage.text))
+                emphasis = sum(1.1 for a, b in zip(words(question), words(question)[1:]) if f"{a} {b}" in content_words)
+                scored.append((bm25 + emphasis, passage))
         scored.sort(key=lambda item: item[0], reverse=True)
         if rerank:
-            # Transparent lexical reranker (not a learned cross-encoder).
-            shortlist = scored[:max(12, topk*4)]
-            shortlist.sort(key=lambda pair: (pair[0] + 0.4*len(set(words(pair[1].text)) & set(query)), -len(pair[1].text)), reverse=True)
+            shortlist = scored[:max(16, topk*6)]
+            shortlist.sort(key=lambda pair: (pair[0] + 0.25*len(set(words(pair[1].text)) & query_terms)), reverse=True)
             scored = shortlist
-        # Deduplicate adjacent chunks from the same page to give diverse evidence.
         selected, seen = [], set()
         for score, p in scored:
-            signature = (p.paper, p.page, p.text[:40])
+            signature = (p.paper, p.page, p.text[:60])
             if signature in seen:
                 continue
             selected.append(p)
@@ -267,11 +306,13 @@ class Groq:
         import httpx
         evidence_text = "\n".join(f"{p.citation} {p.text}" for p in evidence)
         instructions = ("You answer only from the quoted paper passages below. Never use outside knowledge. "
-                        "Every factual assertion must be cited verbatim using the given [arxiv-version p.N] label. "
+                        "Give ONE concise sentence answering the question and end with exactly one bracket citation copied from the passage e.g. [1706.03762v7 p.4]. No Markdown or explanation. "
                         "If unsupported, respond exactly: " + UNSUPPORTED + "\n\n" + evidence_text)
-        payload = {"model": self.model, "stream": True, "temperature": 0, "max_tokens": 220,
+        payload = {"model": self.model, "stream": True, "temperature": 0, "max_completion_tokens": 400,
                    "messages": [{"role": "system", "content": instructions}, {"role": "user", "content": question}],
                    "stream_options": {"include_usage": True}}
+        if self.model.startswith("openai/gpt-oss-"):
+            payload.update(reasoning_effort="low", include_reasoning=False)
         tokens_in, tokens_out = 0, 0
         async with httpx.AsyncClient(timeout=httpx.Timeout(25, connect=6)) as client:
             async with client.stream("POST", "https://api.groq.com/openai/v1/chat/completions", json=payload,
@@ -374,7 +415,11 @@ async def ask(question, corpus, model, setting="balanced", scenario="single", re
         for attempt in range(retries+1):
             try:
                 tokens_in, tokens_out = await model.stream(question, evidence, callback, mark)
-                status = "ok"
+                if model.source == "real" and not output_parts:
+                    mark("no_visible_model_content")
+                    status = "error"
+                else:
+                    status = "ok"
                 break
             except Limited as exc:
                 mark("limit_" + exc.reason)
