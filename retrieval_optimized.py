@@ -29,6 +29,8 @@ EXPANSIONS = {
     "efficiency": ("efficien", "improv", "baseline"),
     "predict": ("predict", "before", "generat"),
     "speech": ("speech", "audio", "stream"),
+    "measure": ("similarity", "cosine", "metric", "score"),
+    "routing": ("boundary", "cosine", "similarity"),
 }
 STOP = set("what how why when which where who is are was were does do did the a an in on for to of from and or by with as paper model models authors author they it this that about many much their explain according there used use its own s".split())
 
@@ -192,6 +194,8 @@ class IndexedRetriever:
                 phrase_bonus += 1.3
             if ("how many" in preference or "how much" in preference or "bleu score" in preference or "latency" in preference) and re.search(r"\b\d+(?:\.\d+)?\s*(?:ms|bleu|x|×)?\b",doc.passage.text.lower()):
                 phrase_bonus += 1
+            if doc.passage.page == 1 and any(phrase in preference for phrase in ("practical","reported","bleu","data-efficiency","models its own")):
+                phrase_bonus += 2.0  # Abstracts often state headline measurements explicitly.
             scored.append((numerator+3*coverage+phrase_bonus,coverage,doc))
         if not scored:
             return []
