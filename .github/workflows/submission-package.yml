@@ -1,0 +1,36 @@
+name: Build downloadable Vaani submission archive
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/submission-package.yml"]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Package exact reviewed commit without secrets or untracked files
+        shell: bash
+        run: |
+          git archive --format=zip --output=Vaani_Relay_Submission_2026-11-11.zip HEAD
+          python - <<'PY'
+          import csv,io,zipfile
+          f="Vaani_Relay_Submission_2026-11-11.zip"
+          with zipfile.ZipFile(f) as z:
+            names=set(z.namelist())
+            assert {"REPORT.pdf","results.csv","relay.py","retrieval_optimized.py","tests/test_retrieval_optimized.py","conversation_history.md"}.issubset(names)
+            rows=list(csv.DictReader(io.TextIOWrapper(z.open("results.csv"),encoding="utf-8")))
+            assert len(rows)==519
+            assert len({r["request_id"] for r in rows})==519
+            print("Verified",len(rows),"rows and",len(names),"tracked files in final archive")
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: Vaani-Relay-Final-Submission
+          path: Vaani_Relay_Submission_2026-11-11.zip
+          retention-days: 30
+          compression-level: 0
