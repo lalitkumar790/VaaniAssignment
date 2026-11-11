@@ -1,0 +1,44 @@
+name: Public Relay site smoke test
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/site-smoke.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Verify anonymous access and CSV data from production
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, io, json, time, urllib.request
+          base="https://vaani-relay.vercel.app"
+          paths=["/","/results.csv","/artifacts/v4_fullpdf_quality_results.csv",
+                 "/data/verified_notes.json","/REPORT.pdf"]
+          for attempt in range(12):
+              try:
+                  contents={}
+                  for path in paths:
+                      req=urllib.request.Request(base+path,headers={"User-Agent":"Relay-public-smoke/1.0"})
+                      with urllib.request.urlopen(req,timeout=15) as resp:
+                          assert resp.status==200,(path,resp.status)
+                          contents[path]=resp.read()
+                  html=contents["/"].decode("utf-8")
+                  assert "16/18" in html and "391 ms" in html
+                  assert len(list(csv.DictReader(io.StringIO(contents["/results.csv"].decode()))))==519
+                  assert len(list(csv.DictReader(io.StringIO(contents["/artifacts/v4_fullpdf_quality_results.csv"].decode()))))==54
+                  assert len(json.loads(contents["/data/verified_notes.json"]))>=15
+                  assert contents["/REPORT.pdf"].startswith(b"%PDF-")
+                  print("PUBLIC_SITE_VERIFIED: HTTP200 on all five routes, correct figures, 519 records, evidence + PDF")
+                  break
+              except Exception as error:
+                  if attempt==11:
+                      raise
+                  print("Production build not yet ready for smoke check:",str(error)[:200])
+                  time.sleep(5)
+          PY
