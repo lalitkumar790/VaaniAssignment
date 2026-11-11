@@ -350,8 +350,11 @@ async def ask(question, corpus, model, setting="balanced", scenario="single", re
             mark("first_token")
         output_parts.append(piece)
 
+    # Local refusals do not produce a model token or spend hosted quota.
+    provider_http_before = len(getattr(model, "header_observations", []))
     if not supported:
-        await callback(UNSUPPORTED)
+        output_parts.append(UNSUPPORTED)
+        mark("local_refusal")
         tokens_out = count_tokens(UNSUPPORTED)
     else:
         for attempt in range(retries+1):
@@ -392,9 +395,11 @@ async def ask(question, corpus, model, setting="balanced", scenario="single", re
         mark("citation_rejected")
     mark("verify")
     total = round(1000*(time.perf_counter()-started), 2)
+    http_calls = len(getattr(model, "header_observations", [])) - provider_http_before
     if trace is not None:
         trace.append({"request_id": request_id, "scenario": scenario, "timeline": timeline,
                       "answer": answer, "retrieved": [p.citation for p in evidence],
+                      "provider_http_responses": http_calls,
                       "source_note": "demo paraphrased notes" if any(p.note != "PDF" for p in evidence) else "versioned PDFs"})
     record = dict(request_id=request_id, scenario=scenario, source=model.source,
                   start_time=wall_start, first_token_ms=first if first is not None else "",
