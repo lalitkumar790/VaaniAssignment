@@ -1,80 +1,84 @@
-# The Relay — Vaani ML Engineering Intern assignment: versioned results
-**Source of truth:** [V1 Groq run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930) · [V3 corrected Groq run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714). All statistics below recomputed from [results.csv](results.csv) (447 individual request records). [Hosted dashboard](https://vaani-relay.vercel.app) is publicly accessible without Vercel sign-in.
+# The Relay — final evidence summary (11 November 2026)
+
+**Authoritative submission:** [Exactly two-page report (PDF)](REPORT.pdf) · [519-row results.csv](results.csv) · [Source code](relay.py) · [Public presentation](https://vaani-relay.vercel.app). This Markdown is an accessible **evidence companion**; submit the two-page PDF as the main write-up.
 
 ## 1 What I built and why
-Python five-stage classify → real version-pinned PDF search → plan/admit → streamed response → verify citation or refuse. Architectural choice: do not send a guessed answer to improve latency. Includes tools, branching, retries, simulated 429/503/slowdown and token-streaming.
+
+Five Python stages: classify, retrieve passages from exact-version PDFs, scope/admit, stream through Groq or a controlled stand-in, and verify citations/refuse. The central choice was **evidence over throughput**: an unsupported claim is refused even when that harms completion rate.
 
 ## 2 The real service and my stand-in
-**V1:** 17 actual Groq requests, 16 successes and one HTTP429 at the token-per-minute limit (Retry-After 5 s). **V2:** 18 HTTP401 authentication failures caused by a literal escape character in the GitHub Actions secret expression; these are invalid as a hosted-model latency baseline. **V3:** 18 real paced Groq requests, all HTTP200, `openai/gpt-oss-20b`; low reasoning effort made content visible within the response budget. Calibrated stand-in uses V1 content-TTFT median and observed TPM/RPD, but queuing and in-flight concurrency remain unmeasured assumptions.
 
-### Table 1 — Limits
+The hosted model is Groq `openai/gpt-oss-20b`. V1 measured 16 successes and one HTTP429, V2 had 18 invalid HTTP401 authentication responses, and V3/V4/V5 each recorded 18 successful serial hosted requests. Simulations reproduce streaming, 503, quota rejection, burst queues and slow tails; their concurrency effects have **not been validated on Groq**.
+
 | Limit | Value found | How found | Confidence |
 |---|---|---|---|
-| Requests/min | 30 (documentation, **not directly measured**) | Published free-model guide | medium |
-| Tokens/min | 8,000 | Groq `x-ratelimit-limit-tokens` on V1 HTTP200/429 | high |
-| Requests/day | 1,000 | Groq `x-ratelimit-limit-requests` on V1; this is **RPD not RPM** | high |
-| Tokens/day | 200,000 (documentation; not measured) | Groq published limits | medium |
-| Requests simultaneously in flight | not measured | All real calls serial | low |
-| Response on limit | HTTP429 and `retry-after: 5` | V1 last request | high |
-| Recovery time | not measured | Retry-After observed, actual recovery not tested | low |
+| Requests/minute | 30 (documentation, not directly measured) | Groq free-model documentation | Medium |
+| Tokens/minute | 8,000 | Groq provider response headers | High |
+| Requests/day | 1,000 | Groq provider response headers | High |
+| Tokens/day | 200,000 (documentation, not directly measured) | Groq published limit | Medium |
+| Requests in flight | Not measured | Hosted probes were serial | Low |
+| Limit response | HTTP429, Retry-After 5 s | V1 last call | High |
+| Actual recovery | Not measured | Retry-After is not proof of recovery | Low |
 
 ## 3 Results
-**Time to first token (TTFT)** is first observed model-content delta, not necessarily time to a fully verified user-facing citation. If no token was emitted, TTFT is not measured; this means conditional TTFT p50 may exceed all-outcome total p50. Asterisks on price indicate counterfactual list pricing, **not** a free-tier charge.
 
-### Table 2a — Latency
-| Scenario | Real or stand-in | Requests | Duration (s) | Offered/min | First token p50/p95/p99 (ms) | Total p50/p95/p99 (ms) |
-|---|---|---:|---:|---:|---|---|
-| Real Groq V3 | real | 18 | 91.50 | 11.8 | 322.9/454.7/496.4 | 348.5/475.5/528.3 |
-| Steady | stand-in | 12 | 3.85 | 186.8 | 1079.9/1270.5/1347.5 | 953.5/1304.4/1394.4 |
-| Burst | stand-in | 22 | 0.73 | 1797.5 | 270.2/677.5/694.9 | 250.9/649.7/716.5 |
-| Sustained overload | stand-in | 28 | 1.94 | 867.5 | 614.1/1287.7/1351.7 | 251.1/1149.1/1362.8 |
-| RPM halved | stand-in | 16 | 2.02 | 475.2 | 698.9/1303.9/1322.6 | 251.5/1321.2/1373.7 |
-| Daily exhausted | stand-in | 10 | 0.54 | 1106.2 | not measured/not measured/not measured | 0.4/0.5/0.5 |
+The final [two-page PDF](REPORT.pdf) contains all three required results tables, computed from the merged [results.csv](results.csv). Times in milliseconds; p50/p95/p99 are computed from actual rows. First-token time is internal first generated text, not time to deliver a validated user-facing answer; rejected requests can lack TTFT entirely.
 
-### Table 2b — Outcomes
-| Scenario | Succeeded | Rate-limited | Timed out or error | Retries/request | Peak queue | Tokens/answer | USD/1,000* |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Real Groq V3 | 100.0% | 0.0% | 0.0% | 0.00 | 0 | 530.1 | 0.052* |
-| Steady | 83.3% | 0.0% | 16.7% | 0.00 | 0 | 96.9 | 0.000* |
-| Burst | 27.3% | 0.0% | 72.7% | 0.00 | 13 | 18.9 | 0.000* |
-| Sustained overload | 32.1% | 0.0% | 67.9% | 0.00 | 4 | 29.5 | 0.000* |
-| RPM halved | 43.8% | 0.0% | 56.3% | 0.00 | 1 | 45.9 | 0.000* |
-| Daily exhausted | 0.0% | 100.0% | 0.0% | 0.00 | 0 | 0.0 | 0.000* |
+| Scenario | Source | N | TTFT p50/p95/p99 | Total p50/p95/p99 | Success | Rate-limited | Timeout/error |
+|---|---|---:|---|---|---:|---:|---:|
+| Real Groq V5 | Real | 18 | 361.6/742.7/920.3 | 431.7/829.3/968.9 | 100.0% | 0.0% | 0.0% |
+| Steady | Stand-in | 12 | 1079.9/1270.5/1347.5 | 953.5/1304.4/1394.4 | 83.3% | 0.0% | 16.7% |
+| Burst | Stand-in | 22 | 270.2/677.5/694.9 | 250.9/649.7/716.5 | 27.3% | 0.0% | 72.7% |
+| Sustained | Stand-in | 28 | 614.1/1287.7/1351.7 | 251.1/1149.1/1362.8 | 32.1% | 0.0% | 67.9% |
+| RPM halved | Stand-in | 16 | 698.9/1303.9/1322.6 | 251.5/1321.2/1373.7 | 43.8% | 0.0% | 56.3% |
+| Daily exhausted | Stand-in | 10 | Not measured | 0.4/0.5/0.5 | 0.0% | 100.0% | 0.0% |
 
-### Table 3 — Full-PDF retrieval settings (stand-in, 18 authored questions per setting)
-| Setting | Questions | Correct + cited | Wrong | Correctly refused | Token proxy/answer | TTFT p50/p95 ms | Total p50/p95 ms |
-|---|---:|---:|---:|---:|---:|---|---|
-| 220 chars / top-1 / no rerank | 18 | 33.3% | 55.6% | 0.0% | 104.6 | 106.8/163.4 | 266.4/359.6 |
-| 500 chars / top-3 / lexical rerank | 18 | 33.3% | 61.1% | 0.0% | 379.1 | 113.9/159.9 | 307.5/396.9 |
-| 1000 chars / top-6 / lexical rerank | 18 | 33.3% | 61.1% | 0.0% | 1394.9 | 109.8/153.4 | 288.5/415.8 |
+**Important denominator:** first-token p50 excludes requests that never emitted a token, while total p50 includes all requests. Thus the steady TTFT p50 (1,079.9 ms) exceeds all-outcome total p50 (953.5 ms) without any individual request having total latency below its own TTFT. The interactive dashboard compares only token-emitting requests for both headline latency medians.
 
-**Quality boundary:** The full-PDF deterministic stand-in strict grades were 18/54 correct, 32/54 wrong and 4/54 wrongly refused. V3 hosted Groq strict oracle graded 6/18 correct, 7 wrong, 2 wrongly refused and 3 correctly refused. A provisional **AI-assisted semantic review**, accounting for valid paraphrases and math notation, found 12/18 correctly answered/cited, 3/18 correct refusals, 2/18 wrongful refusals and 1/18 wrong. That audit is **not independently verified**: manual comparison with exact PDFs is required prior to submission.
+### Table 3 — full-PDF retrieval (stand-in)
+
+| Setting | Questions | Correct + cited | Wrong or wrongful refusal | Correct refusal | Token proxy / answer | TTFT p50/p95 |
+|---|---:|---:|---:|---:|---:|---|
+| 220 chars / K=1 | 18 | 22.2% | 61.1% | 16.7% | 94.2 | 96.3/168.4 |
+| 500 chars / K=3 + rerank | 18 | 33.3% | 55.6% | 11.1% | 335.9 | 106.5/178.1 |
+| 1,000 chars / K=6 + rerank | 18 | 38.9% | 50.0% | 11.1% | 1,221.1 | 117.7/189.3 |
+
+V4 automated stand-in totals: **17/54 correct+cited**, 29 wrong, 7 correctly refused, 1 wrongly refused. V5 real Groq: **6/18 strict correct**, 9 wrong, 3 correctly refused. An earlier AI-assisted semantic review of V3 considered some paraphrased answers valid, but **has not been independently human-audited**, so its score is not promoted to a proven accuracy figure.
 
 ## 4 Where the time goes
-V3 slow request `real-002` measured total 541.5 ms, first content at 506.9 ms. Local classify/retrieve/plan ~8.1 ms, dispatch through server acceptance ~446.6 ms, acceptance to content ~52.1 ms, after-content streaming and verification ~34.6 ms, retries 0. The HTTP acceptance interval includes network, server processing and possibly provider queuing; not a measured provider-queue-only delay.
+
+The PDF includes one real V5 slow-request trace split into retrieval/planning, provider HTTP acceptance, accepted-to-first-content and post-content work. The HTTP-acceptance interval combines network/provider computation/possibly queuing; it is **not** a separately measured upstream queue. No retries occurred in V5.
 
 ## 5 When a limit is hit
-At TPM, downsize retrieval, bound queueing, and honor Retry-After only if the request deadline allows. At RPD exhaustion stop Groq calls and explicitly state capacity failure. Do not turn off citation safeguards or silently generate a weaker answer to improve completion rate.
+
+At TPM/RPM boundaries, reduce retrieval context where feasible and refuse/queue only within an explicit deadline. At RPD exhaustion, stop hosted calls and disclose it. Do not silently bypass citations or provider limits to improve success percentages.
 
 ## Retrieval: quality versus cost
-Tested 220-character top-1 without rerank, 500-character top-3 lexical rerank, 1,000-character top-6 lexical rerank. All scored 6/18 on the strict full-PDF stand-in test; cost rose substantially with context. Choose **balanced** by evidence budget, but quality remains too low for an unattended trusted agent. Under near-quota conditions use smaller K or refuse rather than pretending evidence exists.
+
+More context increased token proxy materially: **94.2 → 335.9 → 1,221.1**, for strict correctness **4/18 → 6/18 → 7/18**. For this constrained assignment, balanced K=3 is a defensible latency/cost compromise, **not** evidence that every question is answerable.
 
 ## How this library will mislead a naive retriever
-Transformer vs Moshi/H-Net share “attention heads”; Moshi's 640 ms delay-related material can be confused with the paper's 160 ms theoretical latency; extracted PDF equations can break math notation (e.g. 1/√dₖ). Page-level citations and paper-aware lexical routing are necessary but insufficient.
+
+(1) “Attention heads” refers to multiple models; paper-aware routing is required. (2) Moshi mentions both **160 ms theoretical** and separate practical timing, alongside 640 ms latency for an incompatible delay setting. (3) H-Net's learned “chunking” differs from arbitrary retrieval chunking, and PDF extraction breaks equations and hyphenated text.
 
 ## 6 Retries
-Retry only a transient pre-stream failure and only within a deadline. A controlled 503 retry recovered an answer but increased latency. The V1 429 returned 5 seconds Retry-After, so immediate retry would worsen user wait without solving capacity.
+
+Retry once for transient **pre-stream** 503 while a deadline permits; never replay a partially streamed answer. Retrying after a true HTTP429 with five seconds Retry-After would worsen latency for a short-deadline request.
 
 ## 7 What the person sees
-At 3pm when RPD is gone: “I can’t provide a verified answer right now because today’s hosted-model quota has been exhausted. Please try after it resets.” No uncited fallback.
+
+> Today's hosted model quota is exhausted. I can't provide a verified answer from these papers right now, and I won't guess. Please try after the quota resets.
 
 ## 8 What I'm unsure about, what I left out, what I learned
-Least-certain assumption: stand-in concurrency slowdown, because Groq was tested serially. If wrong, p95 overload estimates will fail. Deliberately omitted production authentication/multi-tenant backend and embedding-based reranker. Key lesson: day quota can remain high even while minute tokens reject a request, and HTTP200 does not imply a correct cited answer.
+
+The least certain assumption is stand-in behavior under actual concurrent hosted load; all hosted Groq experiments were serial. Deliberately not built: production multi-tenant authentication/billing and semantic cross-encoder reranking. An unexpected observation was that stricter refusal logic improved unsupported-question safety but did **not** increase full-PDF exact-string accuracy; median first-token time does not measure user-visible verified answer delivery.
 
 ## Your feedback on Vaani
-The distinction between call dispatch and completion in Vaani's developer flow stood out. Latency definitions (interrupt vs full response) were hard to compare. A consistent glossary with p50/p95 and test conditions would improve clarity. This drafted feedback should be reviewed as the applicant's own opinion.
+
+The previously drafted product impressions must be checked personally by the applicant against https://www.vaani.dev/ before submission. No AI-generated subjective opinion should be attributed to the applicant without confirmation.
 
 ## How I worked with the assistant
-The implementation, experiments, dashboard and report were AI-assisted. The applicant supplied the assignment and initiated the Groq run. The assistant's early fixture-based quality claim was disproven by full-PDF testing; a later V2 workflow bug escaped a literal backslash into the API-key expression (all 401s), caught by inspecting response headers and fixed before V3. The applicant must supply the **unmodified complete conversation history** and review or correct the AI-authored reflection to distinguish their own engineering decisions; the existing repository excerpt is not a full transcript.
 
-Further evidence: `artifacts/v3_real_results.csv`, `artifacts/v3_real_traces.json`, `artifacts/v3_fullpdf_quality_results.csv`, version-pinned `data/papers/manifest.json`. No secret values are stored in the repository.
+The pipeline, tests, public demo and experimental analysis were developed with substantial AI assistance. The applicant supplied the brief and repository, installed the personal Groq secret and triggered the first real-model workflow. The assistant's initial fixture-based confidence was contradicted by the full-PDF evaluations; subsequent V4/V5 comparisons kept the negative findings instead of claiming unmeasured progress. The earlier workflow's literal escaped-secret issue produced V2 HTTP401s and was corrected. The applicant must attach their authentic **complete raw conversation history** (the existing `conversation_history.md` is explicitly only a partial extract), personally confirm their own three consequential prompts, oversight and overruling decisions, and verify citations.
+
+**Provenance:** [Initial real V1](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930), [real V3](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714), [V4 full-PDF](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42969980873), [real V4](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42969257016), [real V5](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42970031360), [519-row merge + two-page report](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42971254577).
