@@ -13,7 +13,7 @@ import fitz
 
 ROOT=Path(__file__).resolve().parent
 ROWS=list(csv.DictReader((ROOT/"results.csv").open(encoding="utf-8")))
-TR=json.loads((ROOT/"artifacts/v3_real_traces.json").read_text())
+TR=json.loads((ROOT/"artifacts/v5_real_traces.json").read_text())
 GROUP=lambda name:[x for x in ROWS if x["scenario"]==name]
 def quant(vals,p):
     z=sorted(float(x) for x in vals if x not in ("",None))
@@ -28,7 +28,7 @@ def dur(rs):
     en=max(datetime.fromisoformat(x["start_time"])+timedelta(milliseconds=float(x["total_ms"])) for x in rs)
     return (en-st).total_seconds()
 def proxy(rs):return sum(int(x["tokens_in"])+int(x["tokens_out"]) for x in rs)/len(rs)
-S=[("v3_real_modest","Real Groq V3","Groq"),
+S=[("v5_real_modest","Real Groq V5","Groq"),
    ("cal_steady","Steady","stand-in"),
    ("cal_burst","Burst","stand-in"),
    ("cal_sustained_overload","Sustained","stand-in"),
@@ -44,17 +44,17 @@ for key,name,src in S:
                f"{proxy(r):.1f}",f"{usd:.3f}"])
 T3=[]
 for setting,label in [("small","220 chars / top1 / no"),("balanced","500 chars / top3 / yes"),("wide","1000 chars / top6 / yes")]:
-    r=GROUP("v3_retrieval_"+setting);n=len(r);c=Counter(x["answer_grade"] for x in r)
-    T3.append([label,str(n),pct(c["correct"],n),pct(c["wrong"],n),pct(c["refused_correctly"],n),
+    r=GROUP("v4_retrieval_"+setting);n=len(r);c=Counter(x["answer_grade"] for x in r)
+    T3.append([label,str(n),pct(c["correct"],n),pct(c["wrong"]+c["refused_wrongly"],n),pct(c["refused_correctly"],n),
                f"{proxy(r):.1f}",q2(r,"first_token_ms"),q2(r,"total_ms")])
-slow=max((x for x in GROUP("v3_real_modest") if x["status"]=="ok"),key=lambda x:float(x["total_ms"]))
-trace=next(t for t in TR if t["request_id"]==slow["request_id"].removeprefix("v3-"))
+slow=max((x for x in GROUP("v5_real_modest") if x["status"]=="ok"),key=lambda x:float(x["total_ms"]))
+trace=next(t for t in TR if t["request_id"]==slow["request_id"].removeprefix("v5-"))
 m={x["stage"]:x["elapsed_ms"] for x in trace["timeline"]}
 navy=colors.HexColor("#101E2D");ink=colors.HexColor("#10263B");teal=colors.HexColor("#0C897A")
 pale=colors.HexColor("#EEF5F8");line=colors.HexColor("#CADAE2");muted=colors.HexColor("#60738A")
 PW,PH=landscape(A3);W,H=PW/1.2,PH/1.2;mar=29;fw=W-2*mar
 pdf=canvas.Canvas(str(ROOT/"REPORT.pdf"),pagesize=(PW,PH),pageCompression=1)
-pdf.setTitle("The Relay - Vaani - Full-PDF and real Groq V3 engineering report")
+pdf.setTitle("The Relay - Vaani - Full-PDF and real Groq V5 engineering report")
 pdf.scale(1.2,1.2)
 def textwrap(s,x,y,w=0,font=7.9,leading=10):
     pdf.setFont("Helvetica",font);pdf.setFillColor(ink)
@@ -68,7 +68,7 @@ def head(n):
     pdf.drawString(mar+124,H-27,"Vaani · ML Engineering Intern · observed / simulated evidence")
     pdf.setFont("Helvetica-Bold",7);pdf.drawRightString(W-mar,H-29,f"{n} / 2")
     pdf.setFillColor(muted);pdf.setFont("Helvetica",6.8)
-    pdf.drawString(mar,13,"Evidence: results.csv · V1 GitHub run 42866165930 · V3 GitHub run 42870960714 · 10 November 2026")
+    pdf.drawString(mar,13,"Evidence: results.csv · V1 GitHub run 42866165930 · V5 GitHub run 42970031360 · 11 November 2026")
     pdf.drawRightString(W-mar,13,"* Counterfactual retail pricing; no free-tier bill")
 def sec(num,name,y):
     pdf.setFillColor(teal);pdf.setFont("Helvetica-Bold",10);pdf.drawString(mar,y,num)
@@ -98,7 +98,7 @@ head(1);y=H-68
 y=sec("01","What I built and why",y)
 y=textwrap("Five Python stages: classify -> page-cited retrieval from three locked PDFs -> admit/plan -> stream via Groq or stand-in -> verify/refuse. Deliberate trade-off: refuse unsupported claims instead of generating fast uncited answers.",mar,y)-8
 y=sec("02","The real service and my stand-in",y)
-y=textwrap("Groq V3: 18 paced HTTP200 streaming calls, content TTFT p50 322.9 ms; V1: 16 successes then one HTTP429 at the token/min boundary (retry-after 5s). Headers showed 8,000 TPM and 1,000 RPD. V2's 18 HTTP401 failures came from an escaped secret, and are NOT successful real probes. Stand-in fits V1 median TTFT, not unmeasured parallel slowdowns.",mar,y,font=7.7,leading=9.3)-5
+y=textwrap("Groq V5: 18 paced HTTP200 streaming calls, content TTFT p50 361.6 ms; p95 742.7 ms (slower than V4); V1: 16 successes then one HTTP429 at the token/min boundary (retry-after 5s). Headers showed 8,000 TPM and 1,000 RPD. V2's 18 HTTP401 failures came from an escaped secret, and are NOT successful real probes. Stand-in fits V1 median TTFT, not unmeasured parallel slowdowns.",mar,y,font=7.7,leading=9.3)-5
 y=title("TABLE 1  /  Provider limits — measurement versus published documentation",y)
 limitrows=[["Requests/min","30 (docs)","Public free plan; not challenged","medium"],
            ["Tokens/min","8,000","x-ratelimit-limit-tokens, HTTP200/429","high"],
@@ -119,21 +119,21 @@ pdf.showPage();pdf.scale(1.2,1.2)
 head(2);y=H-68
 y=title("TABLE 3  /  Three full-PDF retrieval settings, 18 questions each; strict string/citation oracle",y)
 y=table(["Chunk / K / rerank","N","Correct+cited","Wrong","Correct refuse","Token proxy/answer","TTFT p50/p95 ms","Total p50/p95 ms"],T3,[176,35,91,65,106,119,95,97],y,rh=17)
-y=textwrap("Full-PDF stand-in: 18/54 strict correct, 32/54 wrong, 4/54 wrongly refused. V3 real Groq: 6/18 strict correct. Provisional AI semantic audit suggests 12/18 correct+cited, 3 justified refusals, 2 unnecessary refusals, 1 wrong; NOT independently human-verified.",mar,y,font=7.8)-9
+y=textwrap("V4 full-PDF stand-in: 17/54 strict correct, 29/54 wrong, 1/54 wrongly refused, 7 correctly refused. Real V5: 6/18 strict correct; exact-string grading undercounts paraphrases and spaced units. Semantic review requires manual verification.",mar,y,font=7.8)-9
 cw=(fw-18)/2;left=mar;right=mar+cw+18;yl=y;yr=y
 yl=mini("04  Where the time goes",f"Slow Groq V3 request {trace['request_id']}: total {m['verify']:.1f}ms; first content {m['first_token']:.1f}ms. Local retrieval/plan {m['queue_enter']:.1f}ms, HTTP acceptance/server interval {m['queue_leave']-m['queue_enter']:.1f}ms, accepted-to-content {m['first_token']-m['queue_leave']:.1f}ms, post-content stream+verify {m['verify']-m['first_token']:.1f}ms, 0 retries. Groq's internal queuing is not separately measurable.",left,yl,cw)
 yl=mini("05  When a limit is hit","At TPM, shrink evidence and check whether Retry-After fits the waiting person's deadline; otherwise reject explicitly. At RPD exhaustion, stop hosted calls and never silently downgrade into an uncited guess. V1 measured a five-second retry-after, but not actual recovery.",left,yl,cw)
-yl=mini("Retrieval: quality versus cost","Three tested settings: 220 chars/top-1, 500 chars/top-3, 1,000 chars/top-6. Each strict full-PDF stand-in run scored only 6/18, though wide context cost far more tokens. Prefer the balanced K=3 for budget, but this correctness is not adequate for unattended deployment. Near budget: smaller K or refusal.",left,yl,cw)
+yl=mini("Retrieval: quality versus cost","Three tested settings: 220 chars/top-1, 500 chars/top-3, 1,000 chars/top-6. Strict scores were 4/18 small, 6/18 balanced, 7/18 wide; larger context used more proxy tokens. Prefer the balanced K=3 for budget, but this correctness is not adequate for unattended deployment. Near budget: smaller K or refusal.",left,yl,cw)
 yl=mini("How this library misleads a naive retriever","Attention heads appear in multiple papers; latency passages mix Moshi's 160ms theoretical value with other delay values; PDF extraction can break mathematical formula text such as sqrt(dk). Paper routing and version/page citations mitigate, but do not solve, these errors.",left,yl,cw)
 yl=mini("06  Retries","One pre-first-token transient 503 retry recovered an answer but took longer. Never restart a partially streamed reply. Retrying a measured 429 immediately would worsen latency, since the returned retry-after was 5 seconds.",left,yl,cw)
 yr=mini("07  What the person sees",'At 3pm when the day quota is exhausted: "I cannot provide a verified answer now because the daily hosted-model quota is exhausted. Please try after reset." Do not fabricate a paper citation.',right,yr,cw)
 yr=mini("08  What I am unsure about, left out, learned","Least certain: the stand-in's concurrency slowdown; all Groq calls were serial. Wrong assumption breaks p95 overload. Deliberately omitted public multi-tenant auth and an embedding reranker. Lesson: a 200 status need not mean a correct answer; minute tokens can run out long before daily requests.",right,yr,cw)
 yr=mini("Your feedback on Vaani","The Vaani developer guide's distinction between dispatch and completion stands out. Latency definitions (interrupt vs full response) are difficult to compare; a common glossary showing p50/p95, load, sample size and measurement boundaries would help. Applicant should personally review this opinion.",right,yr,cw)
 yr=mini("How I worked with the assistant","The original user supplied the brief and GitHub repository, then configured a Groq Secret and sent the run link. The assistant wrote code, results and this report. The first optimistic fixture metric failed on real PDFs; an assistant-introduced V2 secret bug caused HTTP401 until detected and fixed. Applicant must include unedited conversation history and verify personal decisions before submission.",right,yr,cw)
-yr=mini("Evidence and limitations","447 per-request rows retain V1 (including true 429), V2 (invalid 401s), V3 (18 real HTTP200s), earlier uncalibrated and newly calibrated stand-in runs. Cost is hypothetical list price, not charge. Groq recovery, true in-flight limit and external human semantic grading remain unmeasured.",right,yr,cw)
+yr=mini("Evidence and limitations","519 per-request rows retain V1 (real 429), V2 (invalid HTTP401), V3/V4/V5 real calls and independent stand-in retrieval/load runs. Cost is hypothetical list price, not charge. Groq recovery, true in-flight limit and external human semantic grading remain unmeasured.",right,yr,cw)
 if min(yl,yr)<40:raise RuntimeError(f"Page2 overflow: {yl}, {yr}")
 pdf.showPage();pdf.save()
 doc=fitz.open(ROOT/"REPORT.pdf")
 assert len(doc)==2
-assert "Real Groq V3" in doc[0].get_text()
+assert "Real Groq V5" in doc[0].get_text()
 print("Generated 2-page PDF with",len(ROWS),"source rows")
