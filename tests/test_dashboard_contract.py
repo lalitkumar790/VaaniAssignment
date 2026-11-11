@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = (ROOT / "index.html").read_text(encoding="utf-8")
-FULLPDF = ROOT / "artifacts" / "v3_fullpdf_quality_results.csv"
+FULLPDF = ROOT / "artifacts" / "v4_fullpdf_quality_results.csv"
 RESULTS = ROOT / "results.csv"
 
 
@@ -18,11 +18,11 @@ def rows(path):
 
 
 def test_dashboard_uses_versioned_full_pdf_evidence():
-    path = "/artifacts/v3_fullpdf_quality_results.csv"
+    path = "/artifacts/v4_fullpdf_quality_results.csv"
     assert path in PAGE
     assert FULLPDF.is_file()
     assert 'x.scenario==="retrieval_"+name' in PAGE
-    assert 'x.scenario==="v3_retrieval_"+name' not in PAGE
+    assert 'x.scenario==="v4_retrieval_"+name' not in PAGE
     data = rows(FULLPDF)
     assert data
     assert all(record["source"] == "stand-in" for record in data)
@@ -38,6 +38,7 @@ def test_dashboard_latency_denominators_are_comparable():
     assert "percentile(x.emittedTotal,50)" in PAGE
     assert "percentile(x.emittedTotal,95)" in PAGE
     data = rows(RESULTS)
+    assert len(data) == 519, 'Final merged request-level evidence must contain 519 rows'
     for r in data:
         if not r["first_token_ms"]:
             continue
