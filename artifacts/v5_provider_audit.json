@@ -1,0 +1,35 @@
+{
+  "source": "GitHub V5 run 42970031360; committed requests, HTTP headers and traces",
+  "pipeline_requests": 18,
+  "hosted_http_requests": 16,
+  "http_statuses": {
+    "200": 16
+  },
+  "local_no_http_requests": 2,
+  "local_request_ids": [
+    "real-016",
+    "real-017"
+  ],
+  "hosted_content_ttft_p50_p95_p99_ms": [
+    390.7,
+    768.8,
+    925.5
+  ],
+  "hosted_total_p50_p95_p99_ms": [
+    441.0,
+    849.8,
+    973.0
+  ],
+  "pipeline_content_ttft_p50_p95_p99_ms": [
+    361.6,
+    742.7,
+    920.3
+  ],
+  "strict_grades_all_pipeline_questions": {
+    "wrong": 9,
+    "correct": 6,
+    "refused_correctly": 3
+  },
+  "normalized_string_key_matches_only": 9,
+  "interpretation": "Normalized string matches are not verified semantic accuracy. Paper-level human citation review is still required."
+}
