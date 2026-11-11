@@ -20,9 +20,11 @@ A Python **five-stage evidence-first research assistant** (classify → retrieve
 | --- | ---: | ---: | ---: | ---: |
 | [V3](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714) | 18/18 HTTP200 | 322.9 ms | 348.5 ms | 6/18 |
 | [V4](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42969257016) | 18/18 HTTP200 | 318.8 ms | 350.5 ms | 6/18 |
-| [V5](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42970031360) | 18/18 HTTP200 | 361.6 ms | 431.7 ms | 6/18 |
+| [V5](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42970031360) | 16 HTTP200 + 2 local refusals | 390.7 ms | 441.0 ms | 6/18 pipeline questions |
 
 The [V1](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930) test recorded 16 successes followed by a genuine **HTTP429, Retry-After 5 s**, with Groq headers indicating **8,000 tokens/min** and **1,000 requests/day**. V2's 18 HTTP401 authentication errors are retained but **excluded from successful-model latency conclusions**.
+
+**Important V5 correction:** The 18-record V5 pipeline includes two refusals that never contacted Groq. HTTP response headers confirm **16 actual hosted calls**. The old 361.6 ms TTFT median includes those local refusals; actual hosted-only TTFT p50 is **390.7 ms**. The 6/18 strict grade checks literal answer-key strings and is **not a verified semantic accuracy estimate**. Run `python audit_evidence.py` to reproduce the distinction.
 
 **Latest full-PDF stand-in ([V4](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42969980873))**: 54 requests covering 18 questions × 3 settings; 17 strict correct+cited, 29 wrong, 7 correctly refused, 1 wrongly refused. Setting-level strict scores: small **4/18**, balanced **6/18**, wide **7/18**. Wide settings use substantially more token-proxy context. These are automated exact-string/citation grades; some semantically correct paraphrases may be undercounted. Conversely a plausible cited answer can still be wrong. **This is an experimental prototype, not production-ready question answering.**
 
@@ -48,7 +50,7 @@ $env:GROQ_API_KEY = "YOUR_PRIVATE_GROQ_KEY"
 python relay.py ask --real "How does Moshi support real-time dialogue?"
 ```
 
-Do **not** commit your API key. The Groq Actions workflows use the repository's `GROQ_API_KEY` secret. The original strictly measured rows are retained in `artifacts/`; `assemble_final_evidence.py` identifies pinned action runs and versions the merged requests. See `render_evidence_pdf.py` for how the mandatory tables are recomputed from `results.csv`. Latest regression tests: **15 passing**.
+Do **not** commit your API key. The Groq Actions workflows use the repository's `GROQ_API_KEY` secret. The original strictly measured rows are retained in `artifacts/`; `assemble_final_evidence.py` identifies pinned action runs and versions the merged requests. See `render_evidence_pdf.py` for how the mandatory tables are recomputed from `results.csv`. Latest regression tests include provider-versus-local accounting assertions..
 
 ## Engineering decisions & limitations
 
