@@ -1,5 +1,5 @@
 # The Relay — Vaani ML Engineering Intern assignment: versioned results
-**Source of truth:** [V1 Groq run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930) · [V3 corrected Groq run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714). All statistics below recomputed from [results.csv](results.csv) (447 individual request records). [Hosted dashboard](https://vaani-relay.vercel.app) requires Vercel Authentication until the owner approves public release.
+**Source of truth:** [V1 Groq run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930) · [V3 corrected Groq run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714). All statistics below recomputed from [results.csv](results.csv) (447 individual request records). [Hosted dashboard](https://vaani-relay.vercel.app) is publicly accessible without Vercel sign-in.
 
 ## 1 What I built and why
 Python five-stage classify → real version-pinned PDF search → plan/admit → streamed response → verify citation or refuse. Architectural choice: do not send a guessed answer to improve latency. Includes tools, branching, retries, simulated 429/503/slowdown and token-streaming.
