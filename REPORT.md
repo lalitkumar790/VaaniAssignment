@@ -8,7 +8,7 @@ Five Python stages: classify, retrieve passages from exact-version PDFs, scope/a
 
 ## 2 The real service and my stand-in
 
-The hosted model is Groq `openai/gpt-oss-20b`. V1 measured 16 successes and one HTTP429, V2 had 18 invalid HTTP401 authentication responses, and V3/V4/V5 each recorded 18 successful serial hosted requests. Simulations reproduce streaming, 503, quota rejection, burst queues and slow tails; their concurrency effects have **not been validated on Groq**.
+The hosted model is Groq `openai/gpt-oss-20b`. V1 measured 16 successes and one HTTP429, V2 had 18 invalid HTTP401 authentication responses, and V3 recorded 18 hosted HTTP200 responses. V5 recorded 18 pipeline questions but only **16 hosted HTTP200 responses**; two questions were refused locally without an API call. The V4 study remains a separately measured prior run. Simulations reproduce streaming, 503, quota rejection, burst queues and slow tails; their concurrency effects have **not been validated on Groq**.
 
 | Limit | Value found | How found | Confidence |
 |---|---|---|---|
@@ -26,7 +26,7 @@ The final [two-page PDF](REPORT.pdf) contains all three required results tables,
 
 | Scenario | Source | N | TTFT p50/p95/p99 | Total p50/p95/p99 | Success | Rate-limited | Timeout/error |
 |---|---|---:|---|---|---:|---:|---:|
-| Real Groq V5 | Real | 18 | 361.6/742.7/920.3 | 431.7/829.3/968.9 | 100.0% | 0.0% | 0.0% |
+| Real Groq V5 (actual HTTP calls) | Real | 16 | 390.7/768.8/925.5 | 441.0/849.8/973.0 | 100.0% | 0.0% | 0.0% |
 | Steady | Stand-in | 12 | 1079.9/1270.5/1347.5 | 953.5/1304.4/1394.4 | 83.3% | 0.0% | 16.7% |
 | Burst | Stand-in | 22 | 270.2/677.5/694.9 | 250.9/649.7/716.5 | 27.3% | 0.0% | 72.7% |
 | Sustained | Stand-in | 28 | 614.1/1287.7/1351.7 | 251.1/1149.1/1362.8 | 32.1% | 0.0% | 67.9% |
@@ -43,7 +43,7 @@ The final [two-page PDF](REPORT.pdf) contains all three required results tables,
 | 500 chars / K=3 + rerank | 18 | 33.3% | 55.6% | 11.1% | 335.9 | 106.5/178.1 |
 | 1,000 chars / K=6 + rerank | 18 | 38.9% | 50.0% | 11.1% | 1,221.1 | 117.7/189.3 |
 
-V4 automated stand-in totals: **17/54 correct+cited**, 29 wrong, 7 correctly refused, 1 wrongly refused. V5 real Groq: **6/18 strict correct**, 9 wrong, 3 correctly refused. An earlier AI-assisted semantic review of V3 considered some paraphrased answers valid, but **has not been independently human-audited**, so its score is not promoted to a proven accuracy figure.
+V4 automated stand-in totals: **17/54 correct+cited**, 29 wrong, 7 correctly refused, 1 wrongly refused. V5's **18 pipeline questions** had 6 literal answer-key matches, 9 labelled wrong and 3 justified refusals under the strict grader. This is **not independently verified semantic accuracy**: Unicode spacing (e.g. `160 ms` versus `160ms`), grammatical paraphrases and the paper's `3.6×` versus the key's `4x` can be mislabelled. V5 had 16 HTTP200 calls and two local refusals; `audit_evidence.py` verifies header counts and creates a per-question review file. An earlier AI-assisted semantic review of V3 considered some paraphrased answers valid, but **has not been independently human-audited**, so its score is not promoted to a proven accuracy figure.
 
 ## 4 Where the time goes
 
