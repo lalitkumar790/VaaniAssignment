@@ -14,7 +14,12 @@ import fitz
 ROOT=Path(__file__).resolve().parent
 ROWS=list(csv.DictReader((ROOT/"results.csv").open(encoding="utf-8")))
 TR=json.loads((ROOT/"artifacts/v5_real_traces.json").read_text())
-GROUP=lambda name:[x for x in ROWS if x["scenario"]==name]
+def GROUP(name):
+    rows=[x for x in ROWS if x["scenario"]==name]
+    # V5: 18 pipeline records, but only 16 actual hosted Groq responses.
+    if name=="v5_real_modest":
+        rows=[r for r in rows if int(r["tokens_in"])>0]
+    return rows
 def quant(vals,p):
     z=sorted(float(x) for x in vals if x not in ("",None))
     if not z:return "NM"
@@ -37,7 +42,7 @@ S=[("v5_real_modest","Real Groq V5","Groq"),
 T2a=[];T2b=[]
 for key,name,src in S:
     r=GROUP(key);n=len(r);d=dur(r);c=Counter(x["status"] for x in r)
-    T2a.append([name,src,str(n),f"{d:.2f}",f"{n*60/d:.1f}",q3(r,"first_token_ms"),q3(r,"total_ms")])
+    T2a.append([name,src,str(n),f"{d:.2f}",f"{n*60/d:.1f}",q3([x for x in r if int(x["tokens_in"])>0],"first_token_ms"),q3(r,"total_ms")])
     usd=(sum((int(x["tokens_in"])*.075+int(x["tokens_out"])*.30)/1e6 for x in r)/n*1000 if src=="Groq" else 0)
     T2b.append([name,pct(c["ok"],n),pct(c["rate_limited"],n),pct(c["timeout"]+c["error"],n),
                f"{sum(int(x['retries']) for x in r)/n:.2f}",str(max(int(x["queue_peak_observed"]) for x in r)),
@@ -98,7 +103,7 @@ head(1);y=H-68
 y=sec("01","What I built and why",y)
 y=textwrap("Five Python stages: classify -> page-cited retrieval from three locked PDFs -> admit/plan -> stream via Groq or stand-in -> verify/refuse. Deliberate trade-off: refuse unsupported claims instead of generating fast uncited answers.",mar,y)-8
 y=sec("02","The real service and my stand-in",y)
-y=textwrap("Groq V5: 18 paced HTTP200 streaming calls, content TTFT p50 361.6 ms; p95 742.7 ms (slower than V4); V1: 16 successes then one HTTP429 at the token/min boundary (retry-after 5s). Headers showed 8,000 TPM and 1,000 RPD. V2's 18 HTTP401 failures came from an escaped secret, and are NOT successful real probes. Stand-in fits V1 median TTFT, not unmeasured parallel slowdowns.",mar,y,font=7.7,leading=9.3)-5
+y=textwrap("Groq V5: 18 pipeline questions, 16 HTTP200 and 2 local refusals. Actual provider TTFT p50 390.7 ms; p95 768.8 ms; V1: 16 successes then one HTTP429 at the token/min boundary (retry-after 5s). Headers showed 8,000 TPM and 1,000 RPD. V2's 18 HTTP401 failures came from an escaped secret, and are NOT successful real probes. Stand-in fits V1 median TTFT, not unmeasured parallel slowdowns.",mar,y,font=7.7,leading=9.3)-5
 y=title("TABLE 1  /  Provider limits — measurement versus published documentation",y)
 limitrows=[["Requests/min","30 (docs)","Public free plan; not challenged","medium"],
            ["Tokens/min","8,000","x-ratelimit-limit-tokens, HTTP200/429","high"],
@@ -109,7 +114,7 @@ limitrows=[["Requests/min","30 (docs)","Public free plan; not challenged","mediu
            ["Real recovery","not measured","5sec suggested, not tested","low"]]
 y=table(["Limit","Value found","How discovered","Confidence"],limitrows,[120,111,421,132],y,rh=16)
 y=sec("03","Results",y)
-y=textwrap("Milliseconds p50/p95/p99. First token = first visible model content, only for requests emitting content (not a fully verified user reply); NM = not measured. Calibrated stand-in load shapes remain modelled, not observed Groq concurrency.",mar,y,font=7.6)-3
+y=textwrap("Milliseconds p50/p95/p99. TTFT excludes zero-input local refusals and unserved requests; completion latency includes all offered scenario requests. NM = not measured. Calibrated stand-in load shapes remain modelled, not observed Groq concurrency.",mar,y,font=7.6)-3
 y=title("TABLE 2a  /  First token and completion time by traffic shape",y)
 y=table(["Scenario","Source","N","Duration s","Offer/min","TTFT p50/p95/p99 ms","Total p50/p95/p99 ms"],T2a,[115,72,35,75,78,201,208],y,rh=16)
 y=title("TABLE 2b  /  Delivery outcomes and costs from the same per-request file",y)
@@ -119,7 +124,7 @@ pdf.showPage();pdf.scale(1.2,1.2)
 head(2);y=H-68
 y=title("TABLE 3  /  Three full-PDF retrieval settings, 18 questions each; strict string/citation oracle",y)
 y=table(["Chunk / K / rerank","N","Correct+cited","Wrong","Correct refuse","Token proxy/answer","TTFT p50/p95 ms","Total p50/p95 ms"],T3,[176,35,91,65,106,119,95,97],y,rh=17)
-y=textwrap("V4 full-PDF stand-in: 17/54 strict correct, 29/54 wrong, 1/54 wrongly refused, 7 correctly refused. Real V5: 6/18 strict correct; exact-string grading undercounts paraphrases and spaced units. Semantic review requires manual verification.",mar,y,font=7.8)-9
+y=textwrap("V4 full-PDF proxy: 17/54 literal-key correct, 29 wrong, 1 wrongful and 7 justified refusals. V5 pipeline: 6/18 literal-key correct; 16 HTTP200 and 2 local refusals. Unicode, phrasing and units distort this grade; human review required.",mar,y,font=7.8)-9
 cw=(fw-18)/2;left=mar;right=mar+cw+18;yl=y;yr=y
 yl=mini("04  Where the time goes",f"Slow Groq V5 request {trace['request_id']}: total {m['verify']:.1f}ms; first content {m['first_token']:.1f}ms. Local retrieval/plan {m['queue_enter']:.1f}ms, HTTP acceptance/server interval {m['queue_leave']-m['queue_enter']:.1f}ms, accepted-to-content {m['first_token']-m['queue_leave']:.1f}ms, post-content stream+verify {m['verify']-m['first_token']:.1f}ms, 0 retries. Groq's internal queuing is not separately measurable.",left,yl,cw)
 yl=mini("05  When a limit is hit","At TPM, shrink evidence and check whether Retry-After fits the waiting person's deadline; otherwise reject explicitly. At RPD exhaustion, stop hosted calls and never silently downgrade into an uncited guess. V1 measured a five-second retry-after, but not actual recovery.",left,yl,cw)
@@ -130,7 +135,7 @@ yr=mini("07  What the person sees",'At 3pm when the day quota is exhausted: "I c
 yr=mini("08  What I am unsure about, left out, learned","Least certain: the stand-in's concurrency slowdown; all Groq calls were serial. Wrong assumption breaks p95 overload. Deliberately omitted public multi-tenant auth and an embedding reranker. Lesson: a 200 status need not mean a correct answer; minute tokens can run out long before daily requests.",right,yr,cw)
 yr=mini("Your feedback on Vaani","The Vaani developer guide's distinction between dispatch and completion stands out. Latency definitions (interrupt vs full response) are difficult to compare; a common glossary showing p50/p95, load, sample size and measurement boundaries would help. Applicant should personally review this opinion.",right,yr,cw)
 yr=mini("How I worked with the assistant","The original user supplied the brief and GitHub repository, then configured a Groq Secret and sent the run link. The assistant wrote code, results and this report. The first optimistic fixture metric failed on real PDFs; an assistant-introduced V2 secret bug caused HTTP401 until detected and fixed. Applicant must include unedited conversation history and verify personal decisions before submission.",right,yr,cw)
-yr=mini("Evidence and limitations","519 per-request rows retain V1 (real 429), V2 (invalid HTTP401), V3/V4/V5 real calls and independent stand-in retrieval/load runs. Cost is hypothetical list price, not charge. Groq recovery, true in-flight limit and external human semantic grading remain unmeasured.",right,yr,cw)
+yr=mini("Evidence and limitations","519 per-request rows retain V1 (real 429), V2 (HTTP401), V3/V4/V5 pipeline runs and stand-ins; V5 has 16 actual Groq calls plus two local refusals. Cost is hypothetical list price, not charge. Groq recovery, true in-flight limit and external human semantic grading remain unmeasured.",right,yr,cw)
 if min(yl,yr)<40:raise RuntimeError(f"Page2 overflow: {yl}, {yr}")
 pdf.showPage();pdf.save()
 doc=fitz.open(ROOT/"REPORT.pdf")
