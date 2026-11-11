@@ -1,13 +1,13 @@
 # The Relay — Vaani ML Engineering Intern assignment
 
-> **Web demo:** https://vaani-relay.vercel.app — deployed on Vercel. Currently protected by the owner's Vercel Authentication setting; external access needs explicit owner approval. The site uses local stand-in CSV and paraphrased evidence notes only, **not a live Groq-backed chatbot**. For real free-tier measurements, see [OPERATIONS.md](OPERATIONS.md) and the manual **Groq measurements** GitHub Actions workflow. Do not share an API key in the repository or chat.
+> **Web demo:** https://vaani-relay.vercel.app — deployed on Vercel. Public production URL; preview deployments remain protected. The site uses local stand-in CSV and paraphrased evidence notes only, **not a live Groq-backed chatbot**. For real free-tier measurements, see [OPERATIONS.md](OPERATIONS.md) and the manual **Groq measurements** GitHub Actions workflow. Do not share an API key in the repository or chat.
 
 
 A research-paper QA pipeline with an explicit **citation-or-refuse** policy, configurable retrieval, a Groq streaming adapter, a failure-injecting stand-in, and per-request latency/load instrumentation.
 
 > **Verified 10 November 2026:** Exact arXiv PDFs downloaded, 18 real Groq V3 calls succeeded, and the earlier first run measured 16 successful requests followed by one HTTP429. Calibrated stand-in traffic scenarios are available. **Accuracy is still limited:** automated full-PDF stand-in oracle 18/54 correct, and assistant-reviewed live-model quality 12/18 correct plus 3 justified refusals (not independently human-audited). Never equate HTTP200 with a correct answer.
 
-**Interactive research dashboard:** https://vaani-relay.vercel.app (deployment ready; currently requires owner Vercel login). **Detailed tables:** [REPORT.md](REPORT.md); **answer audit:** [QUALITY_AUDIT.md](QUALITY_AUDIT.md); **exact raw measurements:** [results.csv](results.csv) (447 request records). **Real-provider evidence:** [V1](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930), [V3](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714). **V2** contained an escaped secret expression and its 18 HTTP401 errors are preserved but not treated as valid latency results.
+**Interactive research dashboard:** https://vaani-relay.vercel.app (public production deployment). **Detailed tables:** [REPORT.md](REPORT.md); **answer audit:** [QUALITY_AUDIT.md](QUALITY_AUDIT.md); **exact raw measurements:** [results.csv](results.csv) (447 request records). **Real-provider evidence:** [V1](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930), [V3](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714). **V2** contained an escaped secret expression and its 18 HTTP401 errors are preserved but not treated as valid latency results.
 
 
 ## Exact library (versions cannot float)
