@@ -132,12 +132,16 @@ class IndexedRetriever:
                     docs.append(Document(counter, self.passage_class(page.paper, page.page, chunk, page.note), sum(counter.values()), set(counter)))
         df = Counter(t for d in docs for t in d.tokens)
         mean = max(1, statistics.mean(d.length for d in docs)) if docs else 1
-        self.cache[setting] = (docs, df, mean)
+        postings = {}
+        for i, doc in enumerate(docs):
+            for term in doc.tokens:
+                postings.setdefault(term, []).append(i)
+        self.cache[setting] = (docs, df, mean, postings)
         return self.cache[setting]
 
     def retrieve(self, question, setting, cfg):
         size, k, rerank = cfg
-        docs, df, avglen = self.index(setting, cfg)
+        docs, df, avglen, postings = self.index(setting, cfg)
         if out_of_corpus_query(question, set(df)):
             return []
         query_words = tokenize(question)
@@ -153,8 +157,18 @@ class IndexedRetriever:
                     for extra in extras:
                         expanded[extra] = max(expanded.get(extra,0),.33)
         n = len(docs)
+        # The inverted index avoids scanning unrelated PDF windows for each query.
+        candidate_ids = set()
+        for term, weight in expanded.items():
+            if term in postings:
+                candidate_ids.update(postings[term])
+            if weight < 1:
+                for key in postings:
+                    if key.startswith(term):
+                        candidate_ids.update(postings[key])
         scored = []
-        for doc in docs:
+        for i in sorted(candidate_ids):
+            doc = docs[i]
             if allowed and doc.passage.paper not in allowed:
                 continue
             numerator = 0
