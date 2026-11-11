@@ -327,15 +327,21 @@ def citation_guard(text, evidence, question=None):
             unit = r"(\d+(?:\.\d+)?)\s*(?:ms|milliseconds?)\b"
             answer_ms = {float(v) for v in re.findall(unit, claim_text)}
             label = "theoretical" if "theoretical" in q else "practical"
-            accepted = set()
-            if label == "theoretical":
-                accepted |= {float(v) for v in re.findall(r"theoretical[^.;]{0,55}?"+unit, source)}
-                accepted |= {float(v) for v in re.findall(unit+r"\s+theoretically", source)}
-            else:
-                accepted |= {float(v) for v in re.findall(r"practical[^.;]{0,55}?"+unit, source)}
-                accepted |= {float(v) for v in re.findall(unit+r"\s+(?:in\s+practice|practical)", source)}
-            if accepted and answer_ms and not answer_ms.issubset(accepted):
-                return UNSUPPORTED
+            def labelled_values(value):
+                if label == "theoretical":
+                    a = re.findall(r"theoretical[^.;,0-9]{0,55}?"+unit, value)
+                    b = re.findall(unit+r"\s+theoretically", value)
+                else:
+                    a = re.findall(r"practical[^.;,0-9]{0,55}?"+unit, value)
+                    b = re.findall(unit+r"\s+(?:in\s+practice|practical)", value)
+                return {float(v) for v in a+b}
+            accepted = labelled_values(source)
+            target_claim = labelled_values(claim_text)
+            # A cited sentence may correctly contrast two latency figures.
+            # Validate the value attributed to the requested qualifier only.
+            if accepted and (target_claim or len(answer_ms) == 1):
+                if not (target_claim or answer_ms).issubset(accepted):
+                    return UNSUPPORTED
     return text
 
 
