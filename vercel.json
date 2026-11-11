@@ -20,6 +20,10 @@
     {
       "src": "artifacts/quality_results.csv",
       "use": "@vercel/static"
+    },
+    {
+      "src": "artifacts/v3_fullpdf_quality_results.csv",
+      "use": "@vercel/static"
     }
   ]
 }
