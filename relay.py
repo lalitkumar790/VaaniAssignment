@@ -93,91 +93,18 @@ class Corpus:
             with fitz.open(path) as doc:
                 for idx, page in enumerate(doc):
                     text = page.get_text("text", sort=True)
-                    text = re.sub(r"\s+", " ", text).strip()
+                    from retrieval_optimized import normalize
+                    text = normalize(text)
                     if text:
                         passages.append(Passage(paper, idx + 1, text))
         return cls(passages)
 
     def retrieve(self, question, setting="balanced"):
-        """Page-preserving, sentence-boundary lexical retrieval, with explicit paper routing.
-
-        The original character-stride splitter cut mathematical facts mid-word,
-        and the old all-paper search confused different models' attention heads.
-        """
-        size, topk, rerank = SETTINGS[setting]
-        q = question.lower()
-        if any(term in q for term in ("moshi", "mimi", "inner monologue")):
-            papers = {"2410.00037v1"}
-        elif any(term in q for term in ("h-net", "hnet", "dynamic chunk", "chunk boundar", "dna sequence", "routing module")):
-            papers = {"2507.07955v2"}
-        elif any(term in q for term in ("transformer", "bleu", "dot-product", "positional encoding", "masked attention")):
-            papers = {"1706.03762v7"}
-        else:
-            papers = set(PAPERS)
-        chunks = []
-        for p in self.passages:
-            if p.paper not in papers:
-                continue
-            sentences = re.split(r"(?<=[.!?])\s+", p.text)
-            units = []
-            for sentence in sentences:
-                sentence = sentence.strip()
-                if not sentence:
-                    continue
-                if len(sentence) > size:
-                    pieces, group = sentence.split(), []
-                    for w in pieces:
-                        if group and len(" ".join(group)) + 1 + len(w) > size:
-                            units.append(" ".join(group))
-                            group = []
-                        group.append(w)
-                    if group:
-                        units.append(" ".join(group))
-                else:
-                    units.append(sentence)
-            buf = []
-            for sentence in units:
-                candidate = " ".join(buf + [sentence])
-                if buf and len(candidate) > size:
-                    block = " ".join(buf)
-                    if len(block) > 24:
-                        chunks.append(Passage(p.paper, p.page, block, p.note))
-                    buf = [buf[-1], sentence] if len(buf[-1]) + 1 + len(sentence) <= size else [sentence]
-                else:
-                    buf.append(sentence)
-            if buf and len(" ".join(buf)) > 24:
-                chunks.append(Passage(p.paper, p.page, " ".join(buf), p.note))
-        if not chunks:
-            return []
-        query = Counter(words(question))
-        docs = [Counter(words(p.text)) for p in chunks]
-        df = Counter(w for d in docs for w in d)
-        avglen = max(1, statistics.mean(sum(d.values()) for d in docs))
-        scored = []
-        query_terms = set(query)
-        for passage, d in zip(chunks, docs):
-            length = max(1, sum(d.values()))
-            bm25 = sum(math.log1p((len(docs)-df[t]+0.5)/(df[t]+0.5)) * (f*2.2/(f+1.2*(0.25+0.75*length/avglen))) * n
-                       for t, n in query.items() if (f := d.get(t, 0)))
-            if bm25 > 0:
-                content_words = " ".join(words(passage.text))
-                emphasis = sum(1.1 for a, b in zip(words(question), words(question)[1:]) if f"{a} {b}" in content_words)
-                scored.append((bm25 + emphasis, passage))
-        scored.sort(key=lambda item: item[0], reverse=True)
-        if rerank:
-            shortlist = scored[:max(16, topk*6)]
-            shortlist.sort(key=lambda pair: (pair[0] + 0.25*len(set(words(pair[1].text)) & query_terms)), reverse=True)
-            scored = shortlist
-        selected, seen = [], set()
-        for score, p in scored:
-            signature = (p.paper, p.page, p.text[:60])
-            if signature in seen:
-                continue
-            selected.append(p)
-            seen.add(signature)
-            if len(selected) >= topk:
-                break
-        return selected
+        """Cached version-aware retrieval, comparing a distinct optimized revision."""
+        from retrieval_optimized import IndexedRetriever
+        if not hasattr(self, "_retriever"):
+            self._retriever = IndexedRetriever(self.passages, Passage)
+        return self._retriever.retrieve(question, setting, SETTINGS[setting])
 
 
 def fetch_papers():
@@ -224,26 +151,38 @@ class Budget:
         self.peak_queue = 0
 
     async def admit(self, estimated_tokens):
+        """Refund a quota reservation if a request never passes the local queue."""
         async with self.lock:
             now = time.monotonic()
-            while self.minute and now - self.minute[0][0] >= 60:
+            while self.minute and now-self.minute[0][0]>=60:
                 _, prior = self.minute.popleft()
                 self.tokens -= prior
-            if self.day_calls >= self.rpd:
-                raise Limited("daily", 86400)
-            if len(self.minute) >= self.rpm or self.tokens + estimated_tokens > self.tpm:
-                raise Limited("minute", max(0, 60-(now-self.minute[0][0])) if self.minute else 60)
-            self.minute.append((now, estimated_tokens))
-            self.day_calls += 1
-            self.tokens += estimated_tokens
-        self.waiters += 1
-        self.peak_queue = max(self.peak_queue, max(0, self.waiters - self.max_parallel))
+            if self.day_calls>=self.rpd:
+                raise Limited("daily",86400)
+            if len(self.minute)>=self.rpm or self.tokens+estimated_tokens>self.tpm:
+                raise Limited("minute",max(0,60-(now-self.minute[0][0])) if self.minute else 60)
+            reservation=(now,estimated_tokens)
+            self.minute.append(reservation)
+            self.day_calls+=1
+            self.tokens+=estimated_tokens
+        self.waiters+=1
+        self.peak_queue=max(self.peak_queue,max(0,self.waiters-self.max_parallel))
         try:
-            await asyncio.wait_for(self.sema.acquire(), timeout=self.queue_timeout)
-        except asyncio.TimeoutError as exc:
+            await asyncio.wait_for(self.sema.acquire(),timeout=self.queue_timeout)
+        except (asyncio.TimeoutError,asyncio.CancelledError) as exc:
+            async with self.lock:
+                try:
+                    self.minute.remove(reservation)
+                except ValueError:
+                    pass
+                else:
+                    self.tokens=max(0,self.tokens-estimated_tokens)
+                self.day_calls=max(0,self.day_calls-1)
+            if isinstance(exc,asyncio.CancelledError):
+                raise
             raise TimedOut("simulator queue deadline") from exc
         finally:
-            self.waiters -= 1
+            self.waiters-=1
 
     def release(self):
         self.sema.release()
@@ -343,33 +282,30 @@ class Groq:
 
 
 def extractive_answer(question, evidence):
-    """Transparent local proxy, not an LLM. It chooses a retrieved sentence only."""
-    if not evidence:
-        return UNSUPPORTED
-    question_terms = set(words(question))
-    choices = []
-    for p in evidence:
-        for sentence in re.split(r"(?<=[.!?])\s+", p.text):
-            overlap = len(set(words(sentence)) & question_terms)
-            if len(sentence) > 18:
-                choices.append((overlap, sentence.strip(), p))
-    choices.sort(key=lambda item: (item[0], -len(item[1])), reverse=True)
-    if not choices or choices[0][0] < 1:
-        return UNSUPPORTED
-    _, sentence, p = choices[0]
-    return sentence[:550].rstrip(".; ") + ". " + p.citation
+    """Query-aware local evidence extraction; not an LLM or answer key."""
+    from retrieval_optimized import semantic_answer
+    return semantic_answer(question, evidence, UNSUPPORTED)
 
 
 def citation_guard(text, evidence):
+    """Check citation syntax and numerical support; not full semantic entailment."""
     if text == UNSUPPORTED:
         return text
+    pattern = r"\[\d{4}\.\d{5}v\d+ p\.\d+\]"
+    found = re.findall(pattern, text)
     allowed = {p.citation for p in evidence}
-    found = re.findall(r"\[\d{4}\.\d{5}v\d+ p\.\d+\]", text)
-    # Reject uncited claims and citations not in the actual returned pages.
-    if not found or any(label not in allowed for label in found):
+    if not found or any(c not in allowed for c in found):
         return UNSUPPORTED
-    # Reject invented unmatched labels of the supported shape.
-    if text.count("[") != len(found):
+    if text.count("[") != len(found) or text.count("]") != len(found):
+        return UNSUPPORTED
+    claim = re.sub(pattern, "", text).strip()
+    if not claim or len(claim)<4:
+        return UNSUPPORTED
+    def numbers(s):
+        s = s.lower().replace("×","x").replace("−","-")
+        return set(re.findall(r"(?<!\w)\d+(?:\.\d+)?",s))
+    cited_text = " ".join(p.text for p in evidence if p.citation in found)
+    if not numbers(claim).issubset(numbers(cited_text)):
         return UNSUPPORTED
     return text
 
@@ -392,10 +328,8 @@ async def ask(question, corpus, model, setting="balanced", scenario="single", re
     evidence = corpus.retrieve(question, setting) if classified == "research" else []
     mark("retrieve")
     # Step 3: local plan + relevance / admission gate.
-    broad_terms = {"moshi", "transformer", "attention", "model", "models", "paper", "h", "net", "dynamic", "chunking", "sequence", "speech", "author", "authors"}
-    specific_terms = set(words(question)) - broad_terms
-    evidence_terms = set(words(" ".join(p.text for p in evidence)))
-    supported = bool(evidence) and bool(specific_terms & evidence_terms)
+    from retrieval_optimized import best_evidence_span
+    supported = bool(evidence) and best_evidence_span(question,evidence) is not None
     mark("plan")
     output_parts = []
     tokens_in, tokens_out = 0, 0
