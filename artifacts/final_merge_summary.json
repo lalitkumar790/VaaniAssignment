@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-11",
+  "rows": 519,
+  "v5_run_id": 42970031360,
+  "v4_full_pdf_run_id": 42969980873,
+  "v5_status": {
+    "ok": 18
+  },
+  "v5_strict_grades": {
+    "wrong": 9,
+    "correct": 6,
+    "refused_correctly": 3
+  },
+  "v4_strict_grades": {
+    "wrong": 29,
+    "correct": 17,
+    "refused_correctly": 7,
+    "refused_wrongly": 1
+  }
+}

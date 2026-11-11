@@ -1,0 +1,194 @@
+[
+  {
+    "at": "2026-11-11T06:06:08.810312+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "986",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7080",
+      "x-ratelimit-reset-requests": "20m9.6s",
+      "x-ratelimit-reset-tokens": "6.9s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:14.656795+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "985",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7046",
+      "x-ratelimit-reset-requests": "21m36s",
+      "x-ratelimit-reset-tokens": "7.154s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:20.529997+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "984",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7401",
+      "x-ratelimit-reset-requests": "23m2.4s",
+      "x-ratelimit-reset-tokens": "4.492s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:26.458826+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "983",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7426",
+      "x-ratelimit-reset-requests": "24m28.8s",
+      "x-ratelimit-reset-tokens": "4.305s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:32.428561+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "982",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7083",
+      "x-ratelimit-reset-requests": "25m55.199s",
+      "x-ratelimit-reset-tokens": "6.877s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:38.386678+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "981",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7021",
+      "x-ratelimit-reset-requests": "27m21.6s",
+      "x-ratelimit-reset-tokens": "7.342s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:44.340745+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "980",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7321",
+      "x-ratelimit-reset-requests": "28m48s",
+      "x-ratelimit-reset-tokens": "5.092s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:50.232891+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "979",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7075",
+      "x-ratelimit-reset-requests": "30m14.4s",
+      "x-ratelimit-reset-tokens": "6.937s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:06:56.116208+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "978",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7374",
+      "x-ratelimit-reset-requests": "31m40.8s",
+      "x-ratelimit-reset-tokens": "4.695s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:02.372134+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "977",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7422",
+      "x-ratelimit-reset-requests": "33m7.2s",
+      "x-ratelimit-reset-tokens": "4.335s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:08.264120+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "976",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7412",
+      "x-ratelimit-reset-requests": "34m33.6s",
+      "x-ratelimit-reset-tokens": "4.41s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:14.101414+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "975",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7387",
+      "x-ratelimit-reset-requests": "36m0s",
+      "x-ratelimit-reset-tokens": "4.597s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:20.063541+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "974",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7386",
+      "x-ratelimit-reset-requests": "37m26.4s",
+      "x-ratelimit-reset-tokens": "4.605s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:26.481424+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "973",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7376",
+      "x-ratelimit-reset-requests": "38m52.8s",
+      "x-ratelimit-reset-tokens": "4.68s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:32.473574+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "972",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7432",
+      "x-ratelimit-reset-requests": "40m19.2s",
+      "x-ratelimit-reset-tokens": "4.26s"
+    }
+  },
+  {
+    "at": "2026-11-11T06:07:38.474062+00:00",
+    "http_status": 200,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-remaining-requests": "971",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-tokens": "7313",
+      "x-ratelimit-reset-requests": "41m45.6s",
+      "x-ratelimit-reset-tokens": "5.152s"
+    }
+  }
+]
