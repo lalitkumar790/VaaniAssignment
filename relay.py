@@ -295,7 +295,7 @@ def extractive_answer(question, evidence):
     return semantic_answer(question, evidence, UNSUPPORTED)
 
 
-def citation_guard(text, evidence):
+def citation_guard(text, evidence, question=None):
     """Check citation syntax and numerical support; not full semantic entailment."""
     if text == UNSUPPORTED:
         return text
@@ -315,6 +315,27 @@ def citation_guard(text, evidence):
     cited_text = " ".join(p.text for p in evidence if p.citation in found)
     if not numbers(claim).issubset(numbers(cited_text)):
         return UNSUPPORTED
+    # A single cited page can contain contradictory qualified metrics.
+    # Check explicit (qualifier, number, unit) associations when available;
+    # this is not a complete proof of semantic entailment.
+    if question:
+        import unicodedata
+        q = unicodedata.normalize("NFKC", question).casefold()
+        source = unicodedata.normalize("NFKC", cited_text).casefold()
+        claim_text = unicodedata.normalize("NFKC", claim).casefold()
+        if "latency" in q and ("theoretical" in q or "practical" in q):
+            unit = r"(\d+(?:\.\d+)?)\s*(?:ms|milliseconds?)\b"
+            answer_ms = {float(v) for v in re.findall(unit, claim_text)}
+            label = "theoretical" if "theoretical" in q else "practical"
+            accepted = set()
+            if label == "theoretical":
+                accepted |= {float(v) for v in re.findall(r"theoretical[^.;]{0,55}?"+unit, source)}
+                accepted |= {float(v) for v in re.findall(unit+r"\s+theoretically", source)}
+            else:
+                accepted |= {float(v) for v in re.findall(r"practical[^.;]{0,55}?"+unit, source)}
+                accepted |= {float(v) for v in re.findall(unit+r"\s+(?:in\s+practice|practical)", source)}
+            if accepted and answer_ms and not answer_ms.issubset(accepted):
+                return UNSUPPORTED
     return text
 
 
@@ -388,7 +409,7 @@ async def ask(question, corpus, model, setting="balanced", scenario="single", re
     mark("draft_end")
     draft = "".join(output_parts).strip()
     # Step 5: local evidence citation guard and refusal branch.
-    answer = citation_guard(draft, evidence) if status == "ok" else (
+    answer = citation_guard(draft, evidence, question) if status == "ok" else (
         "The service is at its usage limit. I can't give a verified answer now." if status == "rate_limited"
         else "I couldn't verify a reply within the response deadline. Please try later.")
     if status == "ok" and answer == UNSUPPORTED and draft != UNSUPPORTED:
