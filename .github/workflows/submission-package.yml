@@ -2,7 +2,12 @@ name: Build downloadable Vaani submission archive
 on:
   push:
     branches: [main]
-    paths: [".github/workflows/submission-package.yml"]
+    paths:
+      - ".github/workflows/submission-package.yml"
+      - "relay.py"
+      - "audit_evidence.py"
+      - "REPORT.pdf"
+      - "artifacts/v5_provider_audit.json"
 permissions:
   contents: read
 jobs:
@@ -22,7 +27,7 @@ jobs:
           f="Vaani_Relay_Submission_2026-11-11.zip"
           with zipfile.ZipFile(f) as z:
             names=set(z.namelist())
-            assert {"REPORT.pdf","results.csv","relay.py","retrieval_optimized.py","tests/test_retrieval_optimized.py","conversation_history.md"}.issubset(names)
+            assert {"REPORT.pdf","results.csv","relay.py","retrieval_optimized.py","tests/test_retrieval_optimized.py","conversation_history.md","audit_evidence.py","artifacts/v5_provider_audit.json","tests/test_numeric_qualifiers.py"}.issubset(names)
             rows=list(csv.DictReader(io.TextIOWrapper(z.open("results.csv"),encoding="utf-8")))
             assert len(rows)==519
             assert len({r["request_id"] for r in rows})==519
