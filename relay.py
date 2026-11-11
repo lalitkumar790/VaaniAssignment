@@ -244,9 +244,17 @@ class Groq:
         observe("queue_enter")
         import httpx
         evidence_text = "\n".join(f"{p.citation} {p.text}" for p in evidence)
-        instructions = ("You answer only from the quoted paper passages below. Never use outside knowledge. "
-                        "Give ONE concise sentence answering the question and end with exactly one bracket citation copied from the passage e.g. [1706.03762v7 p.4]. No Markdown or explanation. "
-                        "If unsupported, respond exactly: " + UNSUPPORTED + "\n\n" + evidence_text)
+        instructions = (
+            "You answer only from quoted passages of three exact-version research papers. "
+            "Identify the precise attribute requested (model variant, dataset, date, theoretical versus practical). "
+            "Prefer explicit numerical facts over incidental table captions and dialogue transcripts. "
+            "Keep mathematical inverses, divisions and denominators precise: 1/sqrt(d) is not sqrt(d). "
+            "Distinguish approximations from exact quantities. Never rely on outside knowledge. "
+            "Write one concise supported sentence ending with exactly one source citation copied verbatim, "
+            "for example [1706.03762v7 p.4]. No Markdown, speculation or uncited claims. "
+            "If the evidence cannot directly resolve the request, respond exactly: "
+            + UNSUPPORTED + "\n\n" + evidence_text
+        )
         payload = {"model": self.model, "stream": True, "temperature": 0, "max_completion_tokens": 400,
                    "messages": [{"role": "system", "content": instructions}, {"role": "user", "content": question}],
                    "stream_options": {"include_usage": True}}
