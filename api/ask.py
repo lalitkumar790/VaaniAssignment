@@ -56,6 +56,108 @@ def valid_reviewer_code(token):
                 and hmac.compare_digest(token.encode("utf-8"), expected.encode("utf-8")))
 
 
+
+def relevant_source_excerpt(question, answer, page_text, max_chars=340):
+    """Find a nearby on-page anchor, not the start of an arbitrary retrieved chunk.
+
+    The excerpt is an inspection aid, not a semantic-entailment guarantee. For
+    numeric answers, show no excerpt unless the cited full page contains the
+    claimed number, to avoid presenting an unrelated passage as evidence.
+    """
+    import unicodedata
+    from retrieval_optimized import normalize, tokenize
+
+    page_text = normalize(page_text)
+    claim = re.sub(r"\[\d{4}\.\d{5}v\d+ p\.\d+\]", "", answer).strip()
+    claim = unicodedata.normalize("NFKC", claim)
+    q = unicodedata.normalize("NFKC", question)
+    numbers = list(dict.fromkeys(re.findall(r"(?<![\w.])\d+(?:\.\d+)?(?!\d)", claim)))
+    keywords = set(tokenize(q + " " + claim))
+    matches = []
+
+    if numbers:
+        for number in numbers:
+            pattern = r"(?<![\d.])" + re.escape(number) + r"(?![\d])"
+            for match in re.finditer(pattern, page_text, re.IGNORECASE):
+                matches.append((match.start(), match.end(), 4.0))
+    else:
+        # For nonnumeric claims, select the best textual overlap across the page.
+        for match in re.finditer(r"\b[A-Za-z][A-Za-z-]{3,}\b", page_text):
+            if match.group().casefold() in keywords:
+                matches.append((match.start(), match.end(), 0.0))
+                if len(matches) > 900:
+                    break
+
+    if not matches:
+        return ""
+
+    requested_qualifier = next((w for w in ("theoretical", "practical", "observed") if w in q.lower()), None)
+    best = None
+    best_score = float("-inf")
+    for start, end, bonus in matches:
+        left = max(0, start - 180)
+        right = min(len(page_text), end + 180)
+        window = page_text[left:right]
+        context = page_text[max(0, start - 95):min(len(page_text), end + 95)].lower()
+        score = bonus + len(keywords & set(tokenize(window))) * 0.75
+        if requested_qualifier and requested_qualifier in context:
+            score += 8
+        if "latency" in q.lower() and "latency" in context:
+            score += 3
+        if "ms" in claim.lower() and re.search(r"\bms\b", context):
+            score += 2
+        if score > best_score:
+            best_score, best = score, (start, end)
+
+    if best is None:
+        return ""
+    start, end = best
+    # Prefer a complete sentence that includes the matched value.
+    search_left = max(0, start - max_chars)
+    sentence_left = page_text.rfind(". ", search_left, start)
+    left = sentence_left + 2 if sentence_left >= 0 else max(0, start - 135)
+    search_right = min(len(page_text), end + max_chars)
+    sentence_right = page_text.find(". ", end, search_right)
+    right = sentence_right + 1 if sentence_right >= 0 else min(len(page_text), end + 175)
+    if right - left > max_chars:
+        left = max(0, start - 135)
+        right = min(len(page_text), left + max_chars)
+        if right <= end:
+            right = min(len(page_text), end + 80)
+            left = max(0, right - max_chars)
+    excerpt = page_text[left:right].strip(" \n\t")
+    if left and not excerpt.startswith(("…", " ")):
+        excerpt = "…" + excerpt
+    if right < len(page_text):
+        excerpt += "…"
+    return excerpt
+
+
+def cited_sources(question, answer, corpus):
+    """Resolve only validated citations to anchored excerpts of their actual pages."""
+    citation_pattern = r"\[\d{4}\.\d{5}v\d+ p\.\d+\]"
+    found = set(re.findall(citation_pattern, answer))
+    if not found:
+        return []
+    # Use the full original PDF page; many independently retrieved chunks share
+    # the same page citation, and the first chunk may be entirely unrelated.
+    pages = {p.citation: p for p in corpus.passages if p.citation in found}
+    result = []
+    for label in sorted(found):
+        page = pages.get(label)
+        if page is None:
+            continue
+        excerpt = relevant_source_excerpt(question, answer, page.text)
+        result.append({
+            "paper": page.paper,
+            "page": page.page,
+            "citation": page.citation,
+            "url": f"https://arxiv.org/pdf/{page.paper}#page={page.page}",
+            "excerpt": excerpt,
+        })
+    return result
+
+
 def make_answer(question):
     """Call the exact five-stage research pipeline; model content is verified before release."""
     corpus = corpus_from_pinned_pdfs()
@@ -68,15 +170,7 @@ def make_answer(question):
     if record["status"] != "ok":
         return 503, {"error": "model_unavailable", "message": "A verified answer is unavailable right now."}
 
-    source_pages = []
-    cited = set(re.findall(r"\[\d{4}\.\d{5}v\d+ p\.\d+\]", answer))
-    if cited:
-        # The verifier already checked these labels against actual retrieved chunks.
-        for p in corpus.retrieve(question, "balanced"):
-            if p.citation in cited and p.citation not in {x["citation"] for x in source_pages}:
-                source_pages.append({"paper": p.paper, "page": p.page, "citation": p.citation,
-                                     "url": f"https://arxiv.org/pdf/{p.paper}#page={p.page}",
-                                     "excerpt": p.text[:115]})
+    source_pages = cited_sources(question, answer, corpus)
     return 200, {
         "answer": answer,
         "refused": answer == UNSUPPORTED,
