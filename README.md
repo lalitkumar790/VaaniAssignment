@@ -6,6 +6,20 @@ A Python **five-stage evidence-first research assistant** (classify → retrieve
 
 **Evidence state as of 11 November 2026:** 519 distinct per-request rows merged from baseline and independently recorded V4/V5 experiments; all real Groq calls are explicitly marked `source=real`, simulations `source=stand-in`. The final GitHub Actions [merge/build run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42971254577) passed the 519-unique-rows and two-PDF-pages assertions.
 
+
+## Protected live website Q&A (server-side Groq)
+
+The public dashboard at https://vaani-relay.vercel.app now contains two explicitly distinct question modes:
+
+- **Live Groq · full PDFs:** `POST /api/ask` calls the real Python retrieval → Groq streaming → citation verification pipeline using the 120-page, SHA-256-verified, compressed index generated from the exact three original arXiv PDFs. Only verified output is returned to the browser. The passcode remains in browser memory (never local storage); the Groq API key is never sent to the browser.
+- **Curated offline preview:** a 19-note, intentionally limited evidence search without any hosted LLM call. This always works without private API credentials.
+
+**Activation (required, private):** the Vercel project `vaani-relay` is connected to GitHub and has `RELAY_DEMO_PASSCODE` set as an encrypted **Production** environment variable. Add `GROQ_API_KEY` as another encrypted **Production** variable directly in **Vercel → vaani-relay → Settings → Environment Variables**. Use the key already saved in your private GitHub Actions secret, or create another at https://console.groq.com/keys. Do **not** paste any key into chat, source code, README, GitHub Issues, or the public website. **Redeploy** the latest `main` commit after setting the variable (existing deployments do not inherit newly added secrets). Then verify that `GET https://vaani-relay.vercel.app/api/ask` returns `"ready":true`. Reviewers need the separate passcode, which the owner must share out of band.
+
+**Abuse controls:** a Vercel WAF rule limits `POST /api/ask` to **2 requests/IP/minute**, and the server verifies a strong reviewer passcode before any model call. Inputs are capped at 220 characters, output at 180 completion tokens, requests must be same-origin, and errors and quota exhaustion fail closed rather than generating uncited fallback text. This is a restricted evaluation demo, **not** a globally budget-capped, multi-tenant production service. Distributed callers sharing the code may still consume the free quota. Revoke or rotate the code when reviewing ends; remove `GROQ_API_KEY` from Vercel to turn live inference off immediately after a fresh deployment.
+
+**Key deployment audit:** `data/web_corpus.json.gz` is generated through [the pinned corpus build workflow](.github/workflows/web-corpus.yml), not curated answers. The public user interface does not reveal or offer download of that compressed corpus. Its source-version hashes are in `data/web_corpus_manifest.json`. Local smoke tests run with no live secret and assert disabled mode; historical Groq latency results are never attributed to this new public deployment.
+
 ## Research corpus (exact versions)
 
 - [Attention Is All You Need — 1706.03762v7](https://arxiv.org/pdf/1706.03762v7)
