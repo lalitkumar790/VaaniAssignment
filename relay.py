@@ -232,11 +232,12 @@ class Groq:
     """Real hosted Groq streaming API; never stores or prints the key."""
     source = "real"
 
-    def __init__(self, model=None):
+    def __init__(self, model=None, max_completion_tokens=400):
         self.key = os.getenv("GROQ_API_KEY")
         if not self.key:
             raise RuntimeError("GROQ_API_KEY is not set. Real requests cannot be measured.")
         self.model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
+        self.max_completion_tokens = min(400, max(32, int(max_completion_tokens)))
         self.header_observations = []
 
     async def stream(self, question, evidence, callback, observe=None):
@@ -255,7 +256,7 @@ class Groq:
             "If the evidence cannot directly resolve the request, respond exactly: "
             + UNSUPPORTED + "\n\n" + evidence_text
         )
-        payload = {"model": self.model, "stream": True, "temperature": 0, "max_completion_tokens": 400,
+        payload = {"model": self.model, "stream": True, "temperature": 0, "max_completion_tokens": self.max_completion_tokens,
                    "messages": [{"role": "system", "content": instructions}, {"role": "user", "content": question}],
                    "stream_options": {"include_usage": True}}
         if self.model.startswith("openai/gpt-oss-"):
