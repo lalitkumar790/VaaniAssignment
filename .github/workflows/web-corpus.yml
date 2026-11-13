@@ -1,0 +1,47 @@
+name: Build pinned full-PDF web corpus
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build_web_corpus.py"
+      - ".github/workflows/web-corpus.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.11"
+      - name: Install pinned-corpus parser
+        run: python -m pip install -r requirements.txt
+      - name: Download exact three arXiv versions
+        run: python relay.py fetch
+      - name: Build compressed, version-checked corpus
+        run: python build_web_corpus.py
+      - name: Confirm complete site index
+        run: |
+          python - <<'PY'
+          import gzip, json, pathlib
+          p=pathlib.Path("data/web_corpus.json.gz")
+          data=json.loads(gzip.decompress(p.read_bytes()))
+          assert set(data["source_sha256"])=={"1706.03762v7","2410.00037v1","2507.07955v2"}
+          assert len(data["pages"]) >= 45
+          print("FULL_PDF_CORPUS_OK",len(data["pages"]),"pages",p.stat().st_size,"compressed bytes")
+          PY
+      - name: Commit version-pinned web index without raw PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/web_corpus.json.gz data/web_corpus_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish hashed full-PDF evidence index for protected live demo"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
