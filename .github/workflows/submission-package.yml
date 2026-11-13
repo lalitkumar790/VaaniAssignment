@@ -8,6 +8,9 @@ on:
       - "audit_evidence.py"
       - "REPORT.pdf"
       - "artifacts/v5_provider_audit.json"
+      - "index.html"
+      - "README.md"
+      - "tests/test_dashboard_contract.py"
 permissions:
   contents: read
 jobs:
@@ -21,10 +24,10 @@ jobs:
       - name: Package exact reviewed commit without secrets or untracked files
         shell: bash
         run: |
-          git archive --format=zip --output=Vaani_Relay_Submission_2026-11-11.zip HEAD
+          git archive --format=zip --output=Vaani_Relay_Submission_Final.zip HEAD
           python - <<'PY'
           import csv,io,zipfile
-          f="Vaani_Relay_Submission_2026-11-11.zip"
+          f="Vaani_Relay_Submission_Final.zip"
           with zipfile.ZipFile(f) as z:
             names=set(z.namelist())
             assert {"REPORT.pdf","results.csv","relay.py","retrieval_optimized.py","tests/test_retrieval_optimized.py","conversation_history.md","audit_evidence.py","artifacts/v5_provider_audit.json","tests/test_numeric_qualifiers.py"}.issubset(names)
@@ -36,6 +39,6 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: Vaani-Relay-Final-Submission
-          path: Vaani_Relay_Submission_2026-11-11.zip
+          path: Vaani_Relay_Submission_Final.zip
           retention-days: 30
           compression-level: 0
