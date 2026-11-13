@@ -28,6 +28,10 @@
     {
       "src": "artifacts/v4_fullpdf_quality_results.csv",
       "use": "@vercel/static"
+    },
+    {
+      "src": "api/ask.py",
+      "use": "@vercel/python"
     }
   ]
 }
