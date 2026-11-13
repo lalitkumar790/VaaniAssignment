@@ -33,5 +33,14 @@
       "src": "api/ask.py",
       "use": "@vercel/python"
     }
+  ],
+  "routes": [
+    {
+      "src": "^/api/ask/?$",
+      "dest": "/api/ask.py"
+    },
+    {
+      "handle": "filesystem"
+    }
   ]
 }
