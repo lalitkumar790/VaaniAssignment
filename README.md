@@ -1,77 +1,47 @@
 # The Relay — Vaani ML Engineering Intern assignment
 
-**Public demo:** https://vaani-relay.vercel.app · **Two-page submission:** [REPORT.pdf](REPORT.pdf) · **Raw request evidence:** [results.csv](results.csv) · **Reproducibility:** [OPERATIONS.md](OPERATIONS.md)
+**[Public demonstration](https://vaani-relay.vercel.app)** · **[Exactly two-page report](REPORT.pdf)** · **[519-row raw results.csv](results.csv)** · **[Assignment brief](https://github.com/lalitkumar790/VaaniAssignment)**
 
-A Python **five-stage evidence-first research assistant** (classify → retrieve the exact PDF versions → admit/plan → stream with Groq or stand-in → verify citation or refuse). It includes quota/queue admission, retries before streaming, paper-version-aware retrieval, a simulated model with 429/503/slowdown/streaming, and three tested chunking settings.
+The Relay is a Python implementation of a five-stage, evidence-first research-paper QA pipeline: **classify → retrieve cited passages → plan/admit → stream a model draft → verify or refuse**. It includes a live Groq adapter, a calibrated *but not concurrency-validated* stand-in model, failure/429 injection, retriable pre-stream errors, and three retrieval settings.
 
-**Evidence state as of 11 November 2026:** 519 distinct per-request rows merged from baseline and independently recorded V4/V5 experiments; all real Groq calls are explicitly marked `source=real`, simulations `source=stand-in`. The final GitHub Actions [merge/build run](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42971254577) passed the 519-unique-rows and two-PDF-pages assertions.
+## Exact source library
 
+| Research paper | Fixed version |
+|---|---|
+| Attention Is All You Need | [1706.03762v7](https://arxiv.org/pdf/1706.03762v7) |
+| Moshi: a speech-text foundation model for real-time dialogue | [2410.00037v1](https://arxiv.org/pdf/2410.00037v1) |
+| Dynamic Chunking for End-to-End Hierarchical Sequence Modeling | [2507.07955v2](https://arxiv.org/pdf/2507.07955v2) |
 
-## Protected live website Q&A (server-side Groq)
+The full-PDF hosted index contains 120 nonempty pages with source SHA-256 hashes in [data/web_corpus_manifest.json](data/web_corpus_manifest.json). The website's **Live Groq** mode calls the server-side `/api/ask` endpoint and requires a private reviewer code; it has been verified on a real Moshi question, including a correct supporting passage. The optional **Offline fixture** uses 19 notes only, without a hosted model call. Neither method guarantees full semantic entailment.
 
-The public dashboard at https://vaani-relay.vercel.app now contains two explicitly distinct question modes:
+**Security:** Groq and reviewer secrets are Vercel Production environment variables, never client-side JavaScript or repository files. Vercel WAF rate-limits `POST /api/ask` to 2/IP/minute; this is not a global token/day budget. Reviewers must be given the separate passcode privately, not through a public README.
 
-- **Live Groq · full PDFs:** `POST /api/ask` calls the real Python retrieval → Groq streaming → citation verification pipeline using the 120-page, SHA-256-verified, compressed index generated from the exact three original arXiv PDFs. Only verified output is returned to the browser. The passcode remains in browser memory (never local storage); the Groq API key is never sent to the browser.
-- **Curated offline preview:** a 19-note, intentionally limited evidence search without any hosted LLM call. This always works without private API credentials.
+## Evidence and what it does *not* prove
 
-**Activation (required, private):** the Vercel project `vaani-relay` is connected to GitHub and has `RELAY_DEMO_PASSCODE` set as an encrypted **Production** environment variable. Add `GROQ_API_KEY` as another encrypted **Production** variable directly in **Vercel → vaani-relay → Settings → Environment Variables**. Use the key already saved in your private GitHub Actions secret, or create another at https://console.groq.com/keys. Do **not** paste any key into chat, source code, README, GitHub Issues, or the public website. **Redeploy** the latest `main` commit after setting the variable (existing deployments do not inherit newly added secrets). Then verify that `GET https://vaani-relay.vercel.app/api/ask` returns `"ready":true`. Reviewers need the separate passcode, which the owner must share out of band.
+- **V1:** 16 real Groq successes and a measured HTTP 429 with 5 seconds of Retry-After; headers indicated 8,000 TPM and 1,000 RPD for the tested account/model.
+- **V5:** 18 pipeline questions, **16 actual Groq HTTP 200 calls and 2 local refusals**. Provider-only first-token p50 **390.7 ms** and total p50 **441.0 ms**. See [the provider audit](artifacts/v5_provider_audit.json).
+- **Full-PDF V4 stand-in:** 18 questions × 3 settings; strict literal-key grade: **17/54 correct and cited, 29 wrong, 7 justified refusals, 1 wrongful refusal**. Strict-key scores should **not** be equated with independently reviewed semantic accuracy. A wider retrieval window costs more tokens, but correctness remains limited.
+- **All requests:** [results.csv](results.csv) contains 519 unique rows, including rejected and failed requests. Real-provider requests were serial; stand-in overload behavior has not been independently validated against Groq concurrency.
 
-**Abuse controls:** a Vercel WAF rule limits `POST /api/ask` to **2 requests/IP/minute**, and the server verifies a strong reviewer passcode before any model call. Inputs are capped at 220 characters, output at 180 completion tokens, requests must be same-origin, and errors and quota exhaustion fail closed rather than generating uncited fallback text. This is a restricted evaluation demo, **not** a globally budget-capped, multi-tenant production service. Distributed callers sharing the code may still consume the free quota. Revoke or rotate the code when reviewing ends; remove `GROQ_API_KEY` from Vercel to turn live inference off immediately after a fresh deployment.
+The [two-page PDF](REPORT.pdf) contains the assignment's required Tables 1, 2a, 2b and 3, a slow trace, admission/timeout/retry decisions, quality/cost tradeoffs, retrieval failure cases, and limitations. Recompute or audit its figures via [render_evidence_pdf.py](render_evidence_pdf.py) and [audit_evidence.py](audit_evidence.py). See [OPERATIONS.md](OPERATIONS.md) for more detail.
 
-**Key deployment audit:** `data/web_corpus.json.gz` is generated through [the pinned corpus build workflow](.github/workflows/web-corpus.yml), not curated answers. The public user interface does not reveal or offer download of that compressed corpus. Its source-version hashes are in `data/web_corpus_manifest.json`. Local smoke tests run with no live secret and assert disabled mode; historical Groq latency results are never attributed to this new public deployment.
+## Reproduce
 
-## Research corpus (exact versions)
+Python 3.11+:
 
-- [Attention Is All You Need — 1706.03762v7](https://arxiv.org/pdf/1706.03762v7)
-- [Moshi — 2410.00037v1](https://arxiv.org/pdf/2410.00037v1)
-- [Dynamic Chunking — 2507.07955v2](https://arxiv.org/pdf/2507.07955v2)
-
-`python relay.py fetch` downloads and hashes all three. Full-PDF mode refuses to run when any version is absent. The public browser “Ask the papers” demonstration uses **curated paraphrased notes** and is **not a live Groq-backed chatbot**.
-
-## Verified measurements (not performance claims)
-
-| Run | Groq requests | TTFT p50 | Total p50 | Strict answer-key score |
-| --- | ---: | ---: | ---: | ---: |
-| [V3](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42870960714) | 18/18 HTTP200 | 322.9 ms | 348.5 ms | 6/18 |
-| [V4](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42969257016) | 18/18 HTTP200 | 318.8 ms | 350.5 ms | 6/18 |
-| [V5](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42970031360) | 16 HTTP200 + 2 local refusals | 390.7 ms | 441.0 ms | 6/18 pipeline questions |
-
-The [V1](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42866165930) test recorded 16 successes followed by a genuine **HTTP429, Retry-After 5 s**, with Groq headers indicating **8,000 tokens/min** and **1,000 requests/day**. V2's 18 HTTP401 authentication errors are retained but **excluded from successful-model latency conclusions**.
-
-**Important V5 correction:** The 18-record V5 pipeline includes two refusals that never contacted Groq. HTTP response headers confirm **16 actual hosted calls**. The old 361.6 ms TTFT median includes those local refusals; actual hosted-only TTFT p50 is **390.7 ms**. The 6/18 strict grade checks literal answer-key strings and is **not a verified semantic accuracy estimate**. Run `python audit_evidence.py` to reproduce the distinction.
-
-**Latest full-PDF stand-in ([V4](https://github.com/lalitkumar790/VaaniAssignment/actions/runs/42969980873))**: 54 requests covering 18 questions × 3 settings; 17 strict correct+cited, 29 wrong, 7 correctly refused, 1 wrongly refused. Setting-level strict scores: small **4/18**, balanced **6/18**, wide **7/18**. Wide settings use substantially more token-proxy context. These are automated exact-string/citation grades; some semantically correct paraphrases may be undercounted. Conversely a plausible cited answer can still be wrong. **This is an experimental prototype, not production-ready question answering.**
-
-## Run and verify
-
-Python 3.11+, then:
-
-```powershell
-git clone https://github.com/lalitkumar790/VaaniAssignment.git
-cd VaaniAssignment
+```bash
 python -m pip install -r requirements.txt
 python -m pytest -q
-
-# Clearly labeled limited offline note fixture
-python relay.py ask --demo "What is Moshi's theoretical latency?"
-
-# Exact 3-paper corpus; internet required
 python relay.py fetch
-python relay.py ask "How does Moshi support real-time dialogue?"
-
-# On Windows PowerShell only: save your key privately in your shell/session
-$env:GROQ_API_KEY = "YOUR_PRIVATE_GROQ_KEY"
-python relay.py ask --real "How does Moshi support real-time dialogue?"
+python relay.py ask "What is the theoretical latency of Moshi?"
 ```
 
-Do **not** commit your API key. The Groq Actions workflows use the repository's `GROQ_API_KEY` secret. The original strictly measured rows are retained in `artifacts/`; `assemble_final_evidence.py` identifies pinned action runs and versions the merged requests. See `render_evidence_pdf.py` for how the mandatory tables are recomputed from `results.csv`. Latest regression tests include provider-versus-local accounting assertions..
+To run hosted calls locally, set `GROQ_API_KEY` privately and use `python relay.py ask --real "What is the theoretical latency of Moshi?"`. Never commit or publish a key. The public Vercel backend is already configured and remains protected by reviewer access and provider quotas.
 
-## Engineering decisions & limitations
+## Required submission and ownership
 
-- Fast refusals are preferred over fabricated uncited replies; the service holds streamed internal tokens until final citation verification. Internal TTFT is **not** user-visible verified-answer latency.
-- The stand-in's parallel slowdown and queue behavior were **not observed on Groq** (real calls were serial). Load shapes simulate admission failures rather than reproducing proven hosted concurrency.
-- Retrieval uses normalized PDF text, version routing, cached chunk indexes, lexical scoring and optional diversification. Its citation guard rejects unreturned citations and unsupported numerical claims but **cannot guarantee semantic entailment**.
-- Queue timeout refunds locally reserved simulated quota; the provider rate-limit headers and observed 429 are distinct from synthetic rate limits.
-- **Applicant action before submission:** personally audit cited answers; replace any drafted personal Vaani feedback with your genuine opinion; attach the full original AI conversation history where available (the repo's `conversation_history.md` is explicitly an extract, not a complete transcript).
+Submit **REPORT.pdf**, **results.csv**, **the repository/source**, and **your authentic unedited assistant conversation history**. The website is optional supporting evidence.
 
-**Artifacts:** [Two-page PDF](REPORT.pdf) · [Results CSV, 519 rows](results.csv) · [V4 full-PDF quality CSV](artifacts/v4_fullpdf_quality_results.csv) · [V5 real Groq CSV](artifacts/v5_real_results.csv) · [V5 traces](artifacts/v5_real_traces.json) · [Final merge summary](artifacts/final_merge_summary.json)
+**Applicant review required:** The repository's [conversation_history.md](conversation_history.md) is only a partial extract, not the requested full transcript. The two-page report contains draft feedback and assistant-work reflection that must be confirmed or revised in the applicant's own words: three consequential prompts, one caught assistant error, one override, and what was distinctly the applicant's contribution. Do not submit invented personal claims.
+
+**Current state:** reproducible evaluated prototype, not a production-ready factual QA service.
