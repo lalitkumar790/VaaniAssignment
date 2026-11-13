@@ -34,9 +34,13 @@ def test_dashboard_uses_versioned_full_pdf_evidence():
 
 
 def test_dashboard_latency_denominators_are_comparable():
-    assert "emittedTotal" in PAGE
-    assert "percentile(x.emittedTotal,50)" in PAGE
-    assert "percentile(x.emittedTotal,95)" in PAGE
+    assert "summaryRows(csv(await r.text()))" in PAGE
+    assert 'id="latency-rows"' in PAGE
+    assert 'id="outcome-rows"' in PAGE
+    assert 'id="retrieval-rows"' in PAGE
+    assert 'Number(x.tokens_in)>0' in PAGE
+    assert "p3(tokens,\"first_token_ms\")" in PAGE
+    assert "p3(set,\"total_ms\")" in PAGE
     data = rows(RESULTS)
     assert len(data) == 519, 'Final merged request-level evidence must contain 519 rows'
     for r in data:
