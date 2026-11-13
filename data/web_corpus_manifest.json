@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "versions": [
+    "1706.03762v7",
+    "2410.00037v1",
+    "2507.07955v2"
+  ],
+  "pages": 120,
+  "uncompressed_bytes": 383535,
+  "compressed_bytes": 131079,
+  "compressed_sha256": "fb603da111e249ff0bf37e22d325d6bf7f66436e517266c9f9827555137819e7",
+  "source_sha256": {
+    "1706.03762v7": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "2410.00037v1": "a687144cc77bea86b0c60ae800ccb1d3e0816033fa5c7960388fe29a0dbfcfac",
+    "2507.07955v2": "04a2b32e6e82853cfc23c5db132750874a86cde99219ec6f664128f4aa83122f"
+  }
+}
