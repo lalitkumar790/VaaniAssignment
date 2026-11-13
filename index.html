@@ -47,7 +47,7 @@ async function liveAnswer(q){
   let data;try{data=await resp.json()}catch(e){throw Error("Server returned an unreadable response")}
   if(!resp.ok){renderAnswerText((data.message||data.error||"Service unavailable")+" ("+resp.status+").");return}
   const out=$("answer");out.replaceChildren();out.append(el("div","",data.answer||"No verified result."));
-  if(Array.isArray(data.sources))for(const p of data.sources){const a=el("a","",p.citation+" · original PDF ↗");a.href=p.url;a.target="_blank";a.rel="noopener noreferrer";out.append(a);out.append(el("div","hint","Source excerpt: "+p.excerpt))}
+  if(Array.isArray(data.sources))for(const p of data.sources){const a=el("a","",p.citation+" · original PDF ↗");a.href=p.url;a.target="_blank";a.rel="noopener noreferrer";out.append(a);out.append(el("div","hint",p.excerpt?"Relevant passage from cited page: "+p.excerpt:"No matching excerpt isolated; inspect the linked PDF page directly."))}
   out.append(el("div","hint","Mode: "+(data.mode==="groq_full_pdf"?"Real Groq · full PDF":"Local refusal · no Groq call")+" · End-to-end server: "+Number(data.server_elapsed_ms).toFixed(0)+" ms. "+(data.notice||"")));
  }catch(e){renderAnswerText(e.name==="AbortError"?"Request timed out safely; no unverified answer was displayed.":"Live request unavailable: "+e.message)}finally{waiting=false;btn.disabled=false;btn.textContent="Ask Groq ↗"}
 }
